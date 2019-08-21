@@ -1,21 +1,19 @@
 
 import React from 'react';
-import { Layout as ThemeLayout, Header, Main, Container } from 'theme-ui';
+// import { Layout as ThemeLayout, Header, Main, Container } from 'theme-ui';
 import { Link } from 'gatsby';
-import useSiteMetadata from '../hooks/use-site-metadata';
 
-const Layout = ({ children }) => {
-  const meta = useSiteMetadata();
+const Layout = ({ children }) => (
+    <>
+        <h1>Gatsby events theme</h1>
+        <div>
+            <div>
+                {children}
+            </div>
+        </div>
 
-  return (
-    <ThemeLayout>
-      <Header>
-        <Link to={meta.basePath}>{meta.title}</Link>
-      </Header>
-      <Main>
-        <Container>{children}</Container>
-      </Main>
-    </ThemeLayout>
-  );
-};
+    </>
+);
+
+export default Layout;
 
