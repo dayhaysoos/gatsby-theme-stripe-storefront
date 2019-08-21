@@ -8,31 +8,55 @@ exports.sourceNodes = async ({
   createContentDigest,
   reporter,
 }) => {
-    console.log('bearer ', process.env)
   const result = await axios({
     method: "GET",
-    url: "https://api.stripe.com/v1/products",
+    url: "https://api.stripe.com/v1/skus",
     headers: {
       Authorization: `Bearer ${process.env.STRIPE_API_SECRET}`,
     },
   })
 
   if (result.errors) {
-    reporter.panic("Error loading products", JSON.stringify(result.errors))
+    reporter.panic("Error loading skus", JSON.stringify(result.errors))
   }
 
-  const productList = result.data
+  const skuList = result.data
 
-  productList.data.forEach(product => {
+  skuList.data.forEach(sku => {
     const node = {
-      ...product,
-      id: createNodeId(`Stripe-${product.id}`),
+      ...sku,
+      id: createNodeId(`Stripe-${sku.id}`),
+      name: sku.attributes.name,
+      slug: sku.attributes.name,
       internal: {
-        type: "StripeProduct",
-        contentDigest: createContentDigest(product),
+        type: "StripeSku",
+        contentDigest: createContentDigest(sku),
       },
     }
 
     actions.createNode(node)
   })
 }
+
+exports.createResolvers = ({ createResolvers }, options) => {
+    const basePath = options.basePath || '/';
+  
+    // Quick-and-dirty helper to convert strings into URL-friendly slugs.
+    const slugify = str => {
+        console.log('Strang', str)
+      const slug = str
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+  
+      return `/${basePath}/${slug}`.replace(/\/\/+/g, '/');
+    };
+  
+    createResolvers({
+      StripeSku: {
+        slug: {
+          resolve: source => slugify(source.name)
+        }
+      }
+    });
+  };
