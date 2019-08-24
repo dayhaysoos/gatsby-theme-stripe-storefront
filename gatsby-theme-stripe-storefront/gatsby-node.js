@@ -33,6 +33,7 @@ exports.sourceNodes = async ({
   skuList.data.forEach(sku => {
     const node = {
       ...sku,
+      skuID: sku.id,
       id: createNodeId(`Stripe-${sku.id}`),
       name: sku.attributes.name,
       slug: sku.attributes.name,

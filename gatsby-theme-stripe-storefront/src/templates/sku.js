@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
 import Layout from '../components/layout';
 import Sku from '../components/sku';
 
 const SkusTemplate = () => {
+
     const data = useStaticQuery(graphql`
       query {
         stripeSku {
@@ -11,6 +12,8 @@ const SkusTemplate = () => {
             price
             product
             image
+            product
+            skuID
           }
       }
     `);

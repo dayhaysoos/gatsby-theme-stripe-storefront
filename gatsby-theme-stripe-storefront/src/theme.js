@@ -1,5 +1,3 @@
-import { auto } from "eol";
-
 export const theme = {
     space: [0, 4, 8, 1, 32],
     fonts: {
@@ -91,6 +89,13 @@ export const theme = {
             textAlign: 'center',
             fontSize: '2rem',
             margin: '0'
+        },
+        custom: {
+            thing: {
+                color: 'white',
+                backgroundColor: 'red',
+                p: 10
+            }
         }
     }
 }
