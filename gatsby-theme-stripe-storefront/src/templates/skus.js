@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '../components/layout';
 import SkuList from '../components/sku-list';
 
 const SkusTemplate = () => {
+
+    useEffect(() => {
+      // window.Stripe(process.env.STRIPE_API_SECRET)
+      console.log('yooo', process.env)
+    })
+
     const data = useStaticQuery(graphql`
       query {
         allStripeSku {
@@ -12,14 +18,13 @@ const SkusTemplate = () => {
               price
               currency
               slug
+              image
             }
           }
       }
     `)
 
     const skus = data.allStripeSku.nodes;
-
-    console.log(skus)
 
     return (
         <Layout>

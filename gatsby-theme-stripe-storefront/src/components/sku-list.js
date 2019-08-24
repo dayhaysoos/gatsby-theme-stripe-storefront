@@ -1,21 +1,28 @@
+/** @jsx jsx */
 import React from 'react';
 import { Link } from 'gatsby';
+import { Styled, jsx } from 'theme-ui';
 
-const SkuList = ({skus}) => (
+
+const renderSkuList = (skus) => (
+    <Styled.ul>
+        {skus.map(sku => (
+            <Styled.li key={sku.id}>
+                <Link to={sku.slug}>
+                    <Styled.img src={sku.image} />
+                </Link>
+                <Link to={sku.slug}>
+                    <Styled.p>{sku.name}</Styled.p>
+                </Link>
+                <Styled.p>$ {sku.price}</Styled.p>
+            </Styled.li>
+        ))}
+    </Styled.ul>
+)
+
+const SkuList = ({ skus }) => (
     <>
-      <h1>Products</h1>
-      <ul>
-          {skus.map(sku => (
-              <li key={sku.id}>
-                  <strong>
-                      <Link to={sku.slug}>
-                          {sku.name}
-                      </Link>
-                  </strong>
-                  <p>{sku.price}</p>
-              </li>
-          ))}
-      </ul>
+        {renderSkuList(skus)}
     </>
 )
 
