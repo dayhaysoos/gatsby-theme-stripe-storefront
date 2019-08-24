@@ -1,9 +1,12 @@
+/** @jsx jsx */
 import React from 'react';
+import {Styled, jsx} from 'theme-ui'
 
-const Sku = ({name, price}) => (
+const Sku = ({name, price, image}) => (
     <div>
-        <h1>{name}</h1>
-        <h2>{price}</h2>
+        <Styled.img src={image}/>
+        <Styled.p>{name}</Styled.p>
+        <Styled.p>$ {price}</Styled.p>
     </div>
 )
 

@@ -10,6 +10,7 @@ const SkusTemplate = () => {
             name
             price
             product
+            image
           }
       }
     `);

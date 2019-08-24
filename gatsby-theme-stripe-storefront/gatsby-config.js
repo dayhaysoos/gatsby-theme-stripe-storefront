@@ -2,5 +2,8 @@
 require("dotenv").config()
 
 module.exports = {
-  plugins: [],
+  plugins: [
+    'gatsby-plugin-theme-ui',
+    'gatsby-plugin-stripe',
+  ],
 }

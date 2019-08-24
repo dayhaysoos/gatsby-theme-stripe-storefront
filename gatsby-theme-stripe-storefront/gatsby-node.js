@@ -34,6 +34,7 @@ exports.sourceNodes = async ({
             id: createNodeId(`Stripe-${sku.id}`),
             name: sku.attributes.name,
             slug: sku.attributes.name,
+            image: sku.image ? sku.image : 'no-image',
             internal: {
                 type: "StripeSku",
                 contentDigest: createContentDigest(sku),
@@ -60,11 +61,19 @@ exports.createResolvers = ({ createResolvers }, options) => {
         return `/${basePath}/${slug}`.replace(/\/\/+/g, '/');
     };
 
+    const formatPrice = num => {
+        const price = (num / 100).toFixed(2)
+        return price;
+    }
+
     // reformat "slug" value in this resolver
     createResolvers({
         StripeSku: {
             slug: {
                 resolve: source => slugify(source.name)
+            },
+            price: {
+                resolve: source => formatPrice(source.price)
             }
         }
     });
@@ -89,6 +98,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
               price
               currency
               slug
+              image
             }
           }
     }

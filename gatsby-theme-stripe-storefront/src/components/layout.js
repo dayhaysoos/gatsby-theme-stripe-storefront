@@ -1,18 +1,16 @@
-
+/** @jsx jsx */
 import React from 'react';
-// import { Layout as ThemeLayout, Header, Main, Container } from 'theme-ui';
-import { Link } from 'gatsby';
+import { Layout as ThemeLayout, Header, Main, jsx } from 'theme-ui';
 
 const Layout = ({ children }) => (
-    <>
-        <h1>Gatsby events theme</h1>
-        <div>
-            <div>
+    <ThemeLayout>
+        <Header>
+            <h1 sx={{ variant: 'test.primary'}}>Gatsby Theme Stripe Storefront</h1>
+        </Header>
+            <Main>
                 {children}
-            </div>
-        </div>
-
-    </>
+            </Main>
+    </ThemeLayout>
 );
 
 export default Layout;
