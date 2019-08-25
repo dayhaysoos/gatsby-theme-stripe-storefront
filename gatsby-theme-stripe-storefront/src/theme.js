@@ -45,16 +45,6 @@ export const theme = {
         Container: {
             padding: 3,
         },
-        test: {
-            primary: {
-                color: 'green',
-                fontSize: '100px'
-            },
-            secondary: {
-                color: 'orange',
-                fontSize: '100px'
-            }
-        },
         h1: {
             color: 'gray.3',
             fontSize: 5,
@@ -90,14 +80,7 @@ export const theme = {
             fontSize: '2rem',
             margin: '0'
         },
-        custom: {
-            thing: {
-                color: 'white',
-                backgroundColor: 'red',
-                p: 10
-            }
-        }
-    }
+    },
 }
 
 export default theme;

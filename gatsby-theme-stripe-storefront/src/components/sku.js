@@ -16,7 +16,7 @@ class Sku extends Component {
 
         const { error } = await this.stripe.redirectToCheckout({
             items: [{ sku: skuID, quantity: 1 }],
-            successUrl: `http://localhost:8000/page-2/`,
+            successUrl: `http://localhost:8000/`,
             cancelUrl: `http://localhost:8000/`,
         })
         if (error) {
