@@ -12,6 +12,20 @@ exports.sourceNodes = async ({
   createContentDigest,
   reporter
 }) => {
+
+  exports.sourceNodes = ({ actions }) => {
+    actions.createTypes(`
+    type StripeSku implements Node @dontInfer {
+        id: ID!
+        name: String!
+        url: String!
+        slug: String!
+        image: String!
+        skuID: String!
+    }
+    `)
+  }
+
   const result = await axios({
     method: 'GET',
     url: 'https://api.stripe.com/v1/skus',
@@ -101,6 +115,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
           currency
           slug
           image
+          skuID
         }
       }
     }
@@ -119,7 +134,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       path: slug,
       component: require.resolve('./src/templates/sku.js'),
       context: {
-        skuID: sku.id
+        slug
       }
     });
   });

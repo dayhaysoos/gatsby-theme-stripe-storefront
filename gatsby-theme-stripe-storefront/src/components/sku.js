@@ -8,7 +8,7 @@ class Sku extends Component {
         this.stripe = window.Stripe(process.env.STRIPE_API_PUBLIC)
     }
 
-    redirectToCheckout =  async (event) => {
+    redirectToCheckout = async (event) => {
         event.preventDefault();
 
         const { skuID } = this.props;
@@ -31,11 +31,11 @@ class Sku extends Component {
 
         return (
             <div>
-                <a onClick={this.redirectToCheckout}>
-                    <Styled.img src={image} />
-                    <Styled.p>{name}</Styled.p>
-                </a>
+                <Styled.img src={image} />
+                <Styled.p>{name}</Styled.p>
                 <Styled.p>$ {price}</Styled.p>
+                <button onClick={this.redirectToCheckout}>Purchase item</button>
+                <button>Add to Cart</button>
             </div>
         )
 

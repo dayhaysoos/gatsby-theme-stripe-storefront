@@ -1,31 +1,42 @@
-import React, { useEffect } from 'react';
-import {graphql, useStaticQuery} from 'gatsby';
+import React from 'react';
+import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import Sku from '../components/sku';
 
-const SkusTemplate = () => {
+// export const query = graphql`
+//   query($sku: String!) {
+//     stripeSku(skuID: {eq: $sku}) {
+//   price
+//   name
+//   price
+//   product
+//   image
+//   product
+//   skuID
+// }
+//   }
+//   `
 
-    const data = useStaticQuery(graphql`
-      query {
-        stripeSku {
-            name
-            price
-            product
-            image
-            product
-            skuID
-          }
-      }
-    `);
-
-    const sku = data.stripeSku
-
-    return (
-        <Layout>
-            <Sku {...sku} />
-        </Layout>
-    )
-}
+export const query = graphql`
+  query($slug: String!) {
+    stripeSku(slug: { eq: $slug } ) {
+      price
+      name
+      price
+      product
+      image
+      product
+      skuID
+    }
+  }
+`
 
 
-export default SkusTemplate;
+const SkuTemplate = ({ data: { stripeSku } }) => (
+  <Layout>
+    <Sku {...stripeSku} />
+  </Layout>
+);
+
+
+export default SkuTemplate;
