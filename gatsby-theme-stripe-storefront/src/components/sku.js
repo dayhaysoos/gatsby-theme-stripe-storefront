@@ -1,17 +1,14 @@
 /** @jsx jsx */
 import React, { Component } from 'react';
 import { Styled, jsx } from 'theme-ui'
+import { useSkus, CartProvider } from '../context/shopping-cart';
 
-class Sku extends Component {
+const Sku = (props) => {
 
-    componentDidMount = () => {
-        this.stripe = window.Stripe(process.env.STRIPE_API_PUBLIC)
-    }
-
-    redirectToCheckout = async (event) => {
+    const redirectToCheckout = async (event) => {
         event.preventDefault();
 
-        const { skuID } = this.props;
+        const { skuID } = props;
 
 
         const { error } = await this.stripe.redirectToCheckout({
@@ -25,22 +22,24 @@ class Sku extends Component {
 
     }
 
-    render() {
+    const { name, price, image, skuID } = props;
+    const { addItem } = useSkus();
 
-        const { name, price, image } = this.props;
-
-        return (
+    return (
             <div>
                 <Styled.img src={image} />
                 <Styled.p>{name}</Styled.p>
                 <Styled.p>$ {price}</Styled.p>
-                <button onClick={this.redirectToCheckout}>Purchase item</button>
-                <button>Add to Cart</button>
+                <button onClick={redirectToCheckout}>Purchase item</button>
+                <button onClick={() => addItem(skuID)}>Add to Cart</button>
             </div>
-        )
+    )
 
-    }
 }
 
 
-export default Sku;
+export default props => (
+    <CartProvider>
+        <Sku {...props}/>
+    </CartProvider>
+)
