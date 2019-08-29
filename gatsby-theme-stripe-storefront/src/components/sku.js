@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import React, { Component } from 'react';
 import { Styled, jsx } from 'theme-ui'
-import { useSkus, CartProvider } from '../context/shopping-cart';
+import { CartProvider } from '../context/shopping-cart';
+import AddItemButton from './add-item-button';
 
 const Sku = (props) => {
 
@@ -23,7 +24,6 @@ const Sku = (props) => {
     }
 
     const { name, price, image, skuID } = props;
-    const { addItem } = useSkus();
 
     return (
             <div>
@@ -31,15 +31,11 @@ const Sku = (props) => {
                 <Styled.p>{name}</Styled.p>
                 <Styled.p>$ {price}</Styled.p>
                 <button onClick={redirectToCheckout}>Purchase item</button>
-                <button onClick={() => addItem(skuID)}>Add to Cart</button>
+                <AddItemButton skuID={skuID} />
             </div>
     )
 
 }
 
 
-export default props => (
-    <CartProvider>
-        <Sku {...props}/>
-    </CartProvider>
-)
+export default Sku;

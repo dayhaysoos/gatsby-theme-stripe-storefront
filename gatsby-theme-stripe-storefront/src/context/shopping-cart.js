@@ -40,13 +40,11 @@ export const useSkus = () => {
 
     const cartCount = skus.length;
 
-    const CartIcon = <p>CartCount {cartCount}</p>
-
-    console.log(cartCount)
+    console.log('sskkeeww', skus)
 
     const addItem = skuID => dispatch({ type: 'addItem', skuID });
     const toggleItem = skuID => dispatch({ type: 'toggle', skuID });
     const deleteItem = skuID => dispatch({ type: 'delete', skuID });
 
-    return { skus, addItem, toggleItem, deleteItem, cartCount, CartIcon};
+    return { skus, addItem, toggleItem, deleteItem, cartCount};
 };

@@ -1,14 +1,12 @@
 import React from 'react';
 import { CartProvider, useSkus } from '../context/shopping-cart';
 
-const AddItem = ({ sku }) => {
+const AddItemButton = ({ skuID }) => {
     const { addItem } = useSkus();
-
-    console.log('use skus', sku)
 
     const handleClick = (e) => {
         e.preventDefault();
-        addItem(sku)
+        addItem(skuID)
     }
 
     return (
@@ -17,8 +15,8 @@ const AddItem = ({ sku }) => {
 }
 
 
-export default () => (
+export default props => (
     <CartProvider>
-        <AddItem />
+        <AddItemButton {...props} />
     </CartProvider>
 );

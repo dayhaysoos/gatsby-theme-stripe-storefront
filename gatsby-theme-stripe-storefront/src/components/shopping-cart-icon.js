@@ -1,13 +1,16 @@
 import React from 'react';
-import { CartProvider, useSkus, CartContext } from '../context/shopping-cart';
+import { CartProvider, useSkus } from '../context/shopping-cart';
 
-const ShoppingCartIcon = () => {
-    const { cartCount } = useSkus();
-    return <h1>Cart Count: {cartCount}</h1>
+const ShoppingCartIcon = (props) => {
+    console.log('what is this', props)
+    return (
+            <div>{useSkus().cartCount}</div>
+    )
+    
 }
 
-export default () => (
+export default (props) => (
     <CartProvider>
-        <ShoppingCartIcon />
+        <ShoppingCartIcon {...props} />
     </CartProvider>
 );
