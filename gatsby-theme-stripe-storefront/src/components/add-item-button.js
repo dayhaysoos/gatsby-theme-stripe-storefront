@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartProvider, useSkus } from '../context/shopping-cart';
+import { useSkus } from '../context/shopping-cart';
 
 const AddItemButton = ({ skuID }) => {
     const { addItem } = useSkus();
@@ -15,8 +15,4 @@ const AddItemButton = ({ skuID }) => {
 }
 
 
-export default props => (
-    <CartProvider>
-        <AddItemButton {...props} />
-    </CartProvider>
-);
+export default AddItemButton;

@@ -14,6 +14,7 @@ const SkusTemplate = () => {
           currency
           slug
           image
+          skuID
         }
       }
     }

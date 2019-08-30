@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React, { Component } from 'react';
 import { Styled, jsx } from 'theme-ui'
-import { CartProvider } from '../context/shopping-cart';
 import AddItemButton from './add-item-button';
 
 const Sku = (props) => {
