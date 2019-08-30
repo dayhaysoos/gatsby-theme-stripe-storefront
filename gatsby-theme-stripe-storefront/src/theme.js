@@ -81,6 +81,16 @@ export const theme = {
             margin: '0'
         },
     },
+    span: {
+        cartCount: {
+            position: 'relative',
+            bottom: '8px',
+            right: '27px',
+            color: 'white',
+            fontSize: '14px',
+            textAlign: 'center',
+        }
+    },
 }
 
 export default theme;
