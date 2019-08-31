@@ -84,13 +84,21 @@ export const theme = {
     span: {
         cartCount: {
             position: 'relative',
-            bottom: '8px',
-            right: '27px',
+            bottom: '45px',
             color: 'white',
             fontSize: '14px',
             textAlign: 'center',
+            fontVariantNumeric: 'tabular-nums'
         }
     },
+    li: {
+        navItem: {
+            height: '40px',
+            width: '40px',
+            listStyle: 'none',
+            textAlign: 'center',
+        }
+    }
 }
 
 export default theme;

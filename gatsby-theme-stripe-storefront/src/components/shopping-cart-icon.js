@@ -2,14 +2,17 @@
 import React from 'react';
 import { useSkus } from '../context/shopping-cart';
 import { jsx } from 'theme-ui';
-import { FaShoppingBag, FaShoppingBasket } from 'react-icons/fa';
+import { FaShoppingBag } from 'react-icons/fa';
 
-const ShoppingCartIcon = (props) => {
+// Shopping cart icon is <li /> to be imported as a nav item
+
+const ShoppingCartIcon = () => {
+    const { cartCount } = useSkus();
     return (
-        <div>
+        <li sx={{variant: 'li.navItem'}}>
             <FaShoppingBag size={40} />
-            <span sx={{variant: 'span.cartCount'}}>{useSkus().cartCount}</span>
-        </div>
+            <span sx={{variant: 'span.cartCount'}}>{cartCount}</span>
+        </li>
     )
     
 }

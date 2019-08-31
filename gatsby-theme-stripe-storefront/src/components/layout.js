@@ -18,9 +18,5 @@ const Layout = ({ children }) => (
     </ThemeLayout>
 );
 
-export default (props) => (
-    <CartProvider>
-        <Layout {...props}/>
-    </CartProvider>
-);
+export default Layout;
 

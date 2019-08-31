@@ -40,8 +40,6 @@ export const useSkus = () => {
 
     const cartCount = skus.length;
 
-    console.log('sskkeeww', skus)
-
     const addItem = skuID => dispatch({ type: 'addItem', skuID });
     const toggleItem = skuID => dispatch({ type: 'toggle', skuID });
     const deleteItem = skuID => dispatch({ type: 'delete', skuID });

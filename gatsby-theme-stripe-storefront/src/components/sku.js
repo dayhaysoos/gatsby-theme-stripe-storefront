@@ -3,15 +3,20 @@ import React, { Component } from 'react';
 import { Styled, jsx } from 'theme-ui'
 import AddItemButton from './add-item-button';
 
+
 const Sku = (props) => {
+
+    const stripe = window.Stripe(process.env.STRIPE_API_PUBLIC)
 
     const redirectToCheckout = async (event) => {
         event.preventDefault();
 
+        console.log(window.history.state)
+
         const { skuID } = props;
 
 
-        const { error } = await this.stripe.redirectToCheckout({
+        const { error } = await stripe.redirectToCheckout({
             items: [{ sku: skuID, quantity: 1 }],
             successUrl: `http://localhost:8000/`,
             cancelUrl: `http://localhost:8000/`,
