@@ -1,45 +1,25 @@
 /** @jsx jsx */
 import React, { Component } from 'react';
 import { Styled, jsx } from 'theme-ui'
-
-class Sku extends Component {
-
-    componentDidMount = () => {
-        this.stripe = window.Stripe(process.env.STRIPE_API_PUBLIC)
-    }
-
-    redirectToCheckout = async (event) => {
-        event.preventDefault();
-
-        const { skuID } = this.props;
+import { useSkus } from '../context/shopping-cart';
+import CheckoutButton from './checkout-button';
+import AddItemButton from './add-item-button';
 
 
-        const { error } = await this.stripe.redirectToCheckout({
-            items: [{ sku: skuID, quantity: 1 }],
-            successUrl: `http://localhost:8000/`,
-            cancelUrl: `http://localhost:8000/`,
-        })
-        if (error) {
-            console.warn("Error:", error)
-        }
+const Sku = (props) => {
 
-    }
+    const { name, price, image, skuID } = props;
 
-    render() {
-
-        const { name, price, image } = this.props;
-
-        return (
+    return (
             <div>
                 <Styled.img src={image} />
                 <Styled.p>{name}</Styled.p>
                 <Styled.p>$ {price}</Styled.p>
-                <button onClick={this.redirectToCheckout}>Purchase item</button>
-                <button>Add to Cart</button>
+                <CheckoutButton />
+                <AddItemButton skuID={skuID} />
             </div>
-        )
+    )
 
-    }
 }
 
 

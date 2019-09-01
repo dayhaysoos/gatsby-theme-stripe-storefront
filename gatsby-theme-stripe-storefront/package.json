@@ -29,6 +29,7 @@
         "gatsby-source-filesystem": "^2.1.9",
         "gatsby-source-graphql": "^2.1.5",
         "gatsby-transformer-yaml": "^2.2.4",
+        "react-icons": "^3.7.0",
         "theme-ui": "^0.2.35"
     }
 }
