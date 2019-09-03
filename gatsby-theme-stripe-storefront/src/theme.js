@@ -57,17 +57,20 @@ export const theme = {
             display: 'flex',
             flexDirection: 'row',
             flexWrap: 'wrap',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             listStyle: 'none',
             padding: 0,
             maxWidth: 'max',
-            width: 'default'
+            width: 'default',
         },
         li: {
             padding: 2,
-            margin: '0 10px',
+            margin: '20px 10px',
+            display: 'flex',
+            flexDirection: 'column',
             '&:focus-within, &:hover': {
-                backgroundColor: 'gray.0'
+                backgroundColor: 'primary',
+                color: 'gray.0'
             },
         },
         img: {
@@ -97,6 +100,29 @@ export const theme = {
             width: '40px',
             listStyle: 'none',
             textAlign: 'center',
+        }
+    },
+    button: {
+        cart: {
+            backgroundColor: 'primary',
+            color: 'gray.0',
+            height: '40px',
+            borderRadius: '10px',
+            fontSize: '24px',
+            margin: '0 10px'
+        }
+    },
+    link: {
+        image: {
+            display: 'flex',
+            justifyContent: 'center'
+        }
+    },
+    section: {
+        itemDetails: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-around'
         }
     }
 }

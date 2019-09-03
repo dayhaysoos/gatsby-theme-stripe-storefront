@@ -5,7 +5,7 @@ import { useSkus } from '../context/shopping-cart';
 
 const CheckoutButton = () => {
     const {redirectToCheckout} = useSkus();
-    return <button onClick={redirectToCheckout}>Checkout</button>
+    return <button sx={{variant: 'button.cart'}} onClick={redirectToCheckout}>Checkout</button>
 }
 
 export default CheckoutButton;

@@ -1,5 +1,7 @@
+/** @jsx jsx */
 import React from 'react';
 import { useSkus } from '../context/shopping-cart';
+import { jsx } from 'theme-ui';
 
 const AddItemButton = ({ skuID }) => {
     const { addItem } = useSkus();
@@ -10,7 +12,9 @@ const AddItemButton = ({ skuID }) => {
     }
 
     return (
-        <button onClick={handleClick}>Add to Cart</button>
+        <button sx={{variant: 'button.cart'}} onClick={handleClick}>
+            Add to Cart
+        </button>
     )
 }
 

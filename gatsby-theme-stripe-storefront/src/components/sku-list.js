@@ -10,15 +10,17 @@ const renderSkuList = (skus) => (
     <Styled.ul>
         {skus.map(sku => (
             <Styled.li key={sku.id}>
-                <Link to={sku.slug}>
+                <Link sx={{ variant: 'link.image' }} to={sku.slug}>
                     <Styled.img src={sku.image} />
                 </Link>
-                <Link to={sku.slug}>
-                    <Styled.p>{sku.name}</Styled.p>
-                </Link>
-                <Styled.p>$ {sku.price}</Styled.p>
-                <AddItemButton skuID={sku.skuID}/>
-                <CheckoutButton />
+                <section sx={{variant: 'section.itemDetails'}}>
+                    <p>{sku.name}</p>
+                    <p>$ {sku.price}</p>
+                </section>
+                <section>
+                    <AddItemButton skuID={sku.skuID} />
+                    <CheckoutButton />
+                </section>
             </Styled.li>
         ))}
     </Styled.ul>

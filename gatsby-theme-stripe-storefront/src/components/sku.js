@@ -1,23 +1,26 @@
 /** @jsx jsx */
 import React, { Component } from 'react';
+import { Link } from 'gatsby';
 import { Styled, jsx } from 'theme-ui'
 import { useSkus } from '../context/shopping-cart';
 import CheckoutButton from './checkout-button';
 import AddItemButton from './add-item-button';
 
 
-const Sku = (props) => {
-
-    const { name, price, image, skuID } = props;
+const Sku = ({ name, price, image, skuID }) => {
 
     return (
-            <div>
+        <div>
+            <section sx={{ variant: 'link.image' }}>
                 <Styled.img src={image} />
-                <Styled.p>{name}</Styled.p>
-                <Styled.p>$ {price}</Styled.p>
-                <CheckoutButton />
-                <AddItemButton skuID={skuID} />
-            </div>
+            </section>
+            <section sx={{variant: 'section.itemDetails'}}>
+                    <p>{name}</p>
+                    <p>$ {price}</p>
+                </section>
+            <CheckoutButton />
+            <AddItemButton skuID={skuID} />
+        </div>
     )
 
 }

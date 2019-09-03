@@ -3,20 +3,6 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import Sku from '../components/sku';
 
-// export const query = graphql`
-//   query($sku: String!) {
-//     stripeSku(skuID: {eq: $sku}) {
-//   price
-//   name
-//   price
-//   product
-//   image
-//   product
-//   skuID
-// }
-//   }
-//   `
-
 export const query = graphql`
   query($slug: String!) {
     stripeSku(slug: { eq: $slug } ) {
