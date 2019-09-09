@@ -2,6 +2,10 @@
 
 This is a gatsby theme for anyone that has a stripe account that wants to quickly spin up an online storefront to sell products from.
 
+## Roadmap
+
+[Notion](https://www.notion.so/dayhaysoos/e03b444617744e29a60a137c49467796?v=318171f8460f40a8b97b4a47cc84cf65)
+
 ## Installation
 
 Install the theme with yarn or npm
