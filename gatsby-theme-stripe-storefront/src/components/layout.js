@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from 'react';
 import { Layout as ThemeLayout, Header, Main, jsx } from 'theme-ui';
-import {CartProvider} from '../context/shopping-cart';
 import ShoppingCartIcon from './shopping-cart-icon';
 
 const Layout = ({ children }) => (

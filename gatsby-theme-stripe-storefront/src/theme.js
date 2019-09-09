@@ -35,11 +35,11 @@ export const theme = {
             justifyContent: 'center'
         },
         Main: {
+            display: 'flex',
+            justifyContent: 'center',
             margin: '0 auto',
             maxWidth: 'max',
             width: 'default',
-            display: 'flex',
-            justifyContent: 'center',
             backgroundColor: 'gray.1'
         },
         Container: {
@@ -84,6 +84,19 @@ export const theme = {
             margin: '0'
         },
     },
+    main: {
+        storefront: {
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '0 auto',
+            maxWidth: 'max',
+            width: 'default',
+            backgroundColor: 'gray.1'
+        },
+        checkout: {
+            
+        }
+    },
     span: {
         cartCount: {
             position: 'relative',
@@ -100,6 +113,16 @@ export const theme = {
             width: '40px',
             listStyle: 'none',
             textAlign: 'center',
+        },
+        checkout: {
+            listStyle: 'none',
+            justifyContent: 'space-around',
+            textAlign: 'left',
+            details: {
+                display: 'flex',
+                justifyContent: 'space-between',
+                margin: '50px 0'
+            }
         }
     },
     button: {
@@ -121,8 +144,39 @@ export const theme = {
     section: {
         itemDetails: {
             display: 'flex',
+            flexDirection: 'column'
+        }
+    },
+    main: {
+        checkout: {
+            width: '100%',
+            flexDirection: 'column',
+        }
+    },
+    ul: {
+        checkout: {
+            details: {
+                flexDirection: 'column'
+            }
+        }
+    },
+    img: {
+        checkout: {
+            width: '100%'
+        }
+    },
+    table: {
+        checkout: {
+            textAlign: 'center',
+            width: '100%',
+        }
+    },
+    div: {
+        confirm: {
+            width: '100%',
+            display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-around'
+            justifyContent: 'flex-end'
         }
     }
 }
