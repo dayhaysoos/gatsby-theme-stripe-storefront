@@ -8,9 +8,6 @@ const Layout = ({ children }) => (
         <Header>
             <h1>Gatsby Theme Stripe Storefront</h1>
         </Header>
-        <h2>
-        <ShoppingCartIcon />
-        </h2>
         <Main>            
             {children}
         </Main>
