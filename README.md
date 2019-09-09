@@ -4,8 +4,6 @@ This is a gatsby theme for anyone that has a stripe account that wants to quickl
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 Install the theme with yarn or npm
 
 ```bash
