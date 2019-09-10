@@ -28,7 +28,7 @@ const removeSku = (skus, action) => {
 const reducer = (skus, action) => {
     switch (action.type) {
         case 'addItem':
-            return skus.concat(action.skuID);
+            return skus.concat(action.skuID).sort();
 
         case 'delete':
                 return removeSku(skus, action);

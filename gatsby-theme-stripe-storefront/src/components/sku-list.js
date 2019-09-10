@@ -1,29 +1,29 @@
 /** @jsx jsx */
 import React from 'react';
 import { Link } from 'gatsby';
-import { Styled, jsx } from 'theme-ui';
+import { jsx } from 'theme-ui';
 import AddItemButton from './add-item-button';
 import CheckoutButton from './checkout-button';
 
 
 const renderSkuList = (skus) => (
-    <Styled.ul>
+    <ul sx={{variant: 'ul.skuList'}}>
         {skus.map(sku => (
-            <Styled.li key={sku.id}>
+            <li sx={{variant: 'li.purchaseItem'}} key={sku.id}>
                 <Link sx={{ variant: 'link.image' }} to={sku.slug}>
-                    <Styled.img src={sku.image} />
+                    <img alt={sku.name} sx={{variant: 'img.skuList'}} src={sku.image} />
                 </Link>
                 <section sx={{variant: 'section.itemDetails'}}>
                     <p>{sku.name}</p>
-                    <p>$ {sku.price}</p>
+                    <p>USD: ${sku.price}</p>
                 </section>
                 <section>
                     <AddItemButton skuID={sku.skuID} />
                     <CheckoutButton />
                 </section>
-            </Styled.li>
+            </li>
         ))}
-    </Styled.ul>
+    </ul>
 )
 
 const SkuList = ({ skus }) => (

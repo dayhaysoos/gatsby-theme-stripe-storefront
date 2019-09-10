@@ -6,7 +6,8 @@ import ShoppingCartIcon from './shopping-cart-icon';
 const Layout = ({ children }) => (
     <ThemeLayout>
         <Header>
-            <h1>Gatsby Theme Stripe Storefront</h1>
+            <p>Gatsby Theme Stripe Storefront</p>
+            <ShoppingCartIcon />
         </Header>
         <Main>            
             {children}

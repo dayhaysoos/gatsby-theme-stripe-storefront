@@ -25,14 +25,13 @@ export const theme = {
             lineHeight: 'body',
         },
         Header: {
-            backgroundColor: 'primary',
-            color: 'background',
+            color: 'primary',
             fontWeight: 'bold',
             margin: '0 auto',
             maxWidth: 'max',
-            padding: 3,
+            padding: 10,
             width: 'default',
-            justifyContent: 'center'
+            justifyContent: 'space-between'
         },
         Main: {
             display: 'flex',
@@ -73,10 +72,6 @@ export const theme = {
                 color: 'gray.0'
             },
         },
-        img: {
-            width: '200px',
-            height: '200px'
-        },
         p: {
             color: 'gray.2',
             textAlign: 'center',
@@ -84,27 +79,17 @@ export const theme = {
             margin: '0'
         },
     },
-    main: {
-        storefront: {
-            display: 'flex',
-            justifyContent: 'center',
-            margin: '0 auto',
-            maxWidth: 'max',
-            width: 'default',
-            backgroundColor: 'gray.1'
-        },
-        checkout: {
-            
-        }
-    },
     span: {
         cartCount: {
-            position: 'relative',
-            bottom: '45px',
-            color: 'white',
-            fontSize: '14px',
-            textAlign: 'center',
-            fontVariantNumeric: 'tabular-nums'
+            position: 'absolute',
+            right: 0,
+            top: '8px',
+            border: '1px solid yellow',
+            borderRadius: '50%',
+            width: '18px',
+            backgroundColor: '#ffdf37',
+            color: 'rebeccapurple',
+            fontSize: '15px'
         }
     },
     li: {
@@ -123,6 +108,18 @@ export const theme = {
                 justifyContent: 'space-between',
                 margin: '50px 0'
             }
+        },
+        purchaseItem: {
+            padding: 2,
+            margin: '20px 10px',
+            display: 'flex',
+            flexDirection: 'column',
+            transition: 'all .2s ease',
+            '&:focus-within, &:hover': {
+                transform: 'scale(1.1)',
+                backgroundColor: 'primary',
+                color: '#ffdf37'
+            },
         }
     },
     button: {
@@ -132,7 +129,31 @@ export const theme = {
             height: '40px',
             borderRadius: '10px',
             fontSize: '24px',
-            margin: '0 10px'
+            margin: '0 10px',
+            transition: 'all .5s ease',
+            outline: 'none',
+            '&:hover': {
+                color: '#ffdf37',
+                border: '1px solid #ffdf37'
+            }
+        },
+        cartIcon: {
+            display: 'flex',
+            justifyContent: 'center',
+            padding: 0,
+            position: 'relative',
+            backgroundColor: 'transparent',
+            border: '1px solid white',
+            height: '60px',
+            width: '60px',
+            cursor: 'pointer',
+            transition: 'all .2s ease',
+            fontWeight: '800',
+            outline: 'none',
+            '&:focus-within, &:hover': {
+                border: '1px solid #ffdf37',
+                transform: 'scale(1.1)'
+            },
         }
     },
     link: {
@@ -143,8 +164,8 @@ export const theme = {
     },
     section: {
         itemDetails: {
-            display: 'flex',
-            flexDirection: 'column'
+            textAlign: 'center',
+            margin: '0 auto',
         }
     },
     main: {
@@ -158,11 +179,29 @@ export const theme = {
             details: {
                 flexDirection: 'column'
             }
+        },
+        skuList: {
+            display: 'flex',
+            color: 'primary',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            listStyle: 'none',
+            padding: 0,
+            maxWidth: 'max',
+            width: 'default',
         }
     },
     img: {
         checkout: {
             width: '100%'
+        },
+        skuList: {
+            width: '200px',
+            height: '200px',
+            '&:focus-within, &:hover': {
+                border: '1px solid #ffdf37',
+            },
         }
     },
     table: {

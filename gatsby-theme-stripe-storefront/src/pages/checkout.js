@@ -15,23 +15,25 @@ const renderCartItems = (checkoutData) => {
                 <li sx={{ variant: 'li.checkout.details' }} key={checkoutItem.sku}>
                     <section sx={{ variant: 'section.itemDetails' }}>
                         <label>{checkoutItem.name}</label>
-                        <img sx={{ variant: 'img.checkout' }} src={checkoutItem.image} />
+                        <img alt={checkoutItem.name} sx={{ variant: 'img.checkout' }} src={checkoutItem.image} />
                     </section>
                     <table sx={{ variant: 'table.checkout' }}>
-                        <tr>
-                            <th>Sku</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                        <tr>
-                            <td>{checkoutItem.sku}</td>
-                            <td>
-                                <div>{checkoutItem.quantity}</div>
-                                <IncrementItemButton skuID={checkoutItem.sku} />
-                                <DecrementItemButton skuID={checkoutItem.sku} />
-                            </td>
-                            <td>{checkoutItem.price}</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <th>Sku</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                            <tr>
+                                <td>{checkoutItem.sku}</td>
+                                <td>
+                                    <div>{checkoutItem.quantity}</div>
+                                    <IncrementItemButton skuID={checkoutItem.sku} />
+                                    <DecrementItemButton skuID={checkoutItem.sku} />
+                                </td>
+                                <td>{checkoutItem.price}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </li>
             )
