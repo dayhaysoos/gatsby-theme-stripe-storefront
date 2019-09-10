@@ -11,26 +11,13 @@ exports.sourceNodes = async ({
   createNodeId,
   createContentDigest,
   reporter
-}) => {
-
-  exports.sourceNodes = ({ actions }) => {
-    actions.createTypes(`
-    type StripeSku implements Node @dontInfer {
-        id: ID!
-        name: String!
-        url: String!
-        slug: String!
-        image: String!
-        skuID: String!
-    }
-    `)
-  }
+}, themeOptions) => {
 
   const result = await axios({
     method: 'GET',
     url: 'https://api.stripe.com/v1/skus',
     headers: {
-      Authorization: `Bearer ${process.env.STRIPE_API_SECRET}`
+      Authorization: `Bearer ${themeOptions.stripeSecretKey}`
     }
   });
 

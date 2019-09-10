@@ -1,9 +1,9 @@
 const React = require("react")
 const { CartProvider } = require('./src/context/shopping-cart')
 
-exports.wrapRootElement = ({ element }) => {
+exports.wrapRootElement = ({ element }, {stripePublicKey}) => {
   return (
-    <CartProvider>
+    <CartProvider stripePublicKey={stripePublicKey}>
       {element}
     </CartProvider>
   )
