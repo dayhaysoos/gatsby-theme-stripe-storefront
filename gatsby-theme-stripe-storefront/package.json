@@ -1,6 +1,6 @@
 {
-    "name": "gatsby-theme-stripe-storefront",
-    "version": "1.0.0",
+    "name": "@dayhaysoos/gatsby-theme-stripe-storefront",
+    "version": "0.1.0",
     "main": "index.js",
     "license": "MIT",
     "scripts": {

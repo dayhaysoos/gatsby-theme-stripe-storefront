@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
   plugins: [
     {
-      resolve: 'gatsby-theme-stripe-storefront',
+      resolve: '@dayhaysoos/gatsby-theme-stripe-storefront',
       options: {
         stripeSecretKey: process.env.STRIPE_API_SECRET,
         stripePublicKey: process.env.STRIPE_API_PUBLIC
