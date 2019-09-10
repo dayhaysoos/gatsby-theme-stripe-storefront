@@ -17,21 +17,27 @@ const manageShoppingCart = (skus) => {
 }
 
 const removeSku = (skus, action) => {
-    if (skus.includes(action.skuID)) {
-        const skuIndex = skus.indexOf(action.skuID)
-        skus.splice(skuIndex, 1);
+    if (skus.skus.includes(action.skuID)) {
+        const skuIndex = skus.skus.indexOf(action.skuID)
+        skus.skus.splice(skuIndex, 1);
     }
 
-    return skus.map(sku => sku);
+    return {
+        ...skus,
+        skus: skus.skus.map(sku => sku)
+    }
 }
 
 const reducer = (skus, action) => {
     switch (action.type) {
         case 'addItem':
-            return skus.concat(action.skuID).sort();
+            return {
+                ...skus,
+                skus: skus.skus.concat(action.skuID).sort()
+            }
 
         case 'delete':
-                return removeSku(skus, action);
+            return removeSku(skus, action);
 
         default:
             console.error(`unknown action ${action.type}`);
@@ -41,18 +47,18 @@ const reducer = (skus, action) => {
 
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => (
-    <CartContext.Provider value={useReducer(reducer, [])}>
+export const CartProvider = ({ children, stripePublicKey }) => (
+    <CartContext.Provider value={useReducer(reducer, {skus: [], stripePublicKey})}>
         {children}
     </CartContext.Provider>
 );
 
 export const useSkus = () => {
-    const [skus, dispatch] = useContext(CartContext);
+    const [{skus, stripePublicKey}, dispatch] = useContext(CartContext);
 
     const cartCount = skus.length;
     const checkoutData = manageShoppingCart(skus);
-    const stripe = window.Stripe(process.env.STRIPE_API_PUBLIC)
+    const stripe = window.Stripe(stripePublicKey);
 
     const addItem = skuID => dispatch({ type: 'addItem', skuID });
     const deleteItem = skuID => dispatch({ type: 'delete', skuID });
