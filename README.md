@@ -11,11 +11,11 @@ This is a gatsby theme for anyone that has a stripe account that wants to quickl
 Install the theme with yarn or npm
 
 ```bash
-yarn add gatsby-theme-stripe-storefront
+yarn add @dayhaysoos/gatsby-theme-stripe-storefront
 ```
 
 ```bash
-npm install gatsby-theme-stripe-storefront
+npm install @dayhaysoos/gatsby-theme-stripe-storefront
 ```
 
 ## Usage
