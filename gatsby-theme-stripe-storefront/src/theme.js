@@ -14,8 +14,8 @@ export const theme = {
         primary: 'rebeccapurple'
     },
     sizes: {
-        default: '90vw',
-        max: '90%'
+        default: '100%',
+        max: '100%'
     },
     styles: {
         Layout: {
@@ -113,7 +113,11 @@ export const theme = {
                 transition: 'all .2s ease',
                 boxShadow: '2px 10px 10px gray',
                 color: 'primary',
-                margin: '20px'
+                margin: '20px',
+                maxWidth: 360,
+                flexGrow: 1,
+                flexShrink: 1,
+                flexBasis: '300px'
             }
         },
         purchaseItem: {
@@ -125,6 +129,10 @@ export const theme = {
             boxShadow: '2px 10px 10px gray',
             justifyContent: 'center',
             alignItems: 'center',
+            maxWidth: 360,
+            flexGrow: 1,
+            flexShrink: 1,
+            flexBasis: '20%',
             '&:focus-within, &:hover': {
                 color: 'primary'
             },
@@ -220,7 +228,7 @@ export const theme = {
             display: 'flex',
             justifyContent: 'space-around',
             flexWrap: 'wrap',
-            maxWidth: '100%',
+            padding: 0,
         },
         skuList: {
             display: 'flex',
