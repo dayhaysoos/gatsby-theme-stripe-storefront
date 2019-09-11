@@ -25,7 +25,8 @@ export const theme = {
             lineHeight: 'body',
         },
         Header: {
-            color: 'primary',
+            color: 'gray.0',
+            backgroundColor: 'primary',
             fontWeight: 'bold',
             margin: '0 auto',
             maxWidth: 'max',
@@ -35,11 +36,14 @@ export const theme = {
         },
         Main: {
             display: 'flex',
+            flexDirection: 'column',
+            color: 'primary',
             justifyContent: 'center',
             margin: '0 auto',
             maxWidth: 'max',
             width: 'default',
-            backgroundColor: 'gray.1'
+            backgroundColor: 'background',
+            textAlign: 'center'
         },
         Container: {
             padding: 3,
@@ -104,9 +108,12 @@ export const theme = {
             justifyContent: 'space-around',
             textAlign: 'left',
             details: {
-                display: 'flex',
                 justifyContent: 'space-between',
-                margin: '50px 0'
+                listStyle: 'none',
+                transition: 'all .2s ease',
+                boxShadow: '2px 10px 10px gray',
+                color: 'primary',
+                margin: '20px'
             }
         },
         purchaseItem: {
@@ -115,10 +122,11 @@ export const theme = {
             display: 'flex',
             flexDirection: 'column',
             transition: 'all .2s ease',
+            boxShadow: '2px 10px 10px gray',
+            justifyContent: 'center',
+            alignItems: 'center',
             '&:focus-within, &:hover': {
-                transform: 'scale(1.1)',
-                backgroundColor: 'primary',
-                color: '#ffdf37'
+                color: 'primary'
             },
         }
     },
@@ -128,10 +136,11 @@ export const theme = {
             color: 'gray.0',
             height: '40px',
             borderRadius: '10px',
-            fontSize: '24px',
+            fontSize: '16px',
             margin: '0 10px',
             transition: 'all .5s ease',
             outline: 'none',
+            minWidth: '70px',
             '&:hover': {
                 color: '#ffdf37',
                 border: '1px solid #ffdf37'
@@ -139,21 +148,44 @@ export const theme = {
         },
         cartIcon: {
             display: 'flex',
+            color: 'gray.0',
+            border: 'none',
             justifyContent: 'center',
             padding: 0,
             position: 'relative',
             backgroundColor: 'transparent',
-            border: '1px solid white',
             height: '60px',
             width: '60px',
             cursor: 'pointer',
             transition: 'all .2s ease',
             fontWeight: '800',
             outline: 'none',
-            '&:focus-within, &:hover': {
-                border: '1px solid #ffdf37',
+            '&:hover': {
                 transform: 'scale(1.1)'
             },
+        },
+        checkout: {
+            backgroundColor: 'primary',
+            color: 'gray.0',
+            fontSize: '18px',
+            transition: 'all .5s ease',
+            outline: 'none',
+            borderRadius: '10px',
+            '&:hover': {
+                color: '#ffdf37',
+                border: '1px solid #ffdf37'
+            },
+            addRemove: {
+                backgroundColor: 'primary',
+                color: 'gray.0',
+                fontSize: '18px',
+                transition: 'all .5s ease',
+                outline: 'none',
+                '&:hover': {
+                    color: '#ffdf37',
+                    border: '1px solid #ffdf37'
+                },
+            }
         }
     },
     link: {
@@ -166,19 +198,29 @@ export const theme = {
         itemDetails: {
             textAlign: 'center',
             margin: '0 auto',
+        },
+        buttonWrapper: {
+            display: 'flex'
+        },
+        checkout: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
         }
     },
     main: {
         checkout: {
+            textAlign: 'center',
+            color: 'primary',
             width: '100%',
-            flexDirection: 'column',
         }
     },
     ul: {
         checkout: {
-            details: {
-                flexDirection: 'column'
-            }
+            display: 'flex',
+            justifyContent: 'space-around',
+            flexWrap: 'wrap',
+            maxWidth: '100%',
         },
         skuList: {
             display: 'flex',
@@ -188,26 +230,22 @@ export const theme = {
             justifyContent: 'center',
             listStyle: 'none',
             padding: 0,
-            maxWidth: 'max',
-            width: 'default',
         }
     },
     img: {
         checkout: {
-            width: '100%'
+            maxHeight: '200px',
+            maxWidth: '200px',
+            height: '50%',
+            width: '50%'
         },
         skuList: {
             width: '200px',
             height: '200px',
+            transition: 'all .5s ease',
             '&:focus-within, &:hover': {
-                border: '1px solid #ffdf37',
+                transform: 'scale(1.1)',
             },
-        }
-    },
-    table: {
-        checkout: {
-            textAlign: 'center',
-            width: '100%',
         }
     },
     div: {
@@ -216,7 +254,12 @@ export const theme = {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'flex-end'
-        }
+        },
+        checkout: {
+            display: 'flex',
+            flexDirection: 'column',
+            marginLeft: '5px'
+        },
     }
 }
 

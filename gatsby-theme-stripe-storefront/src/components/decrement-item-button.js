@@ -11,7 +11,7 @@ const DecrementItemButton = ({ skuID }) => {
     }
 
     return (
-        <button sx={{variant: 'button.cart'}} onClick={handleClick}>
+        <button sx={{variant: 'button.checkout.addRemove'}} onClick={handleClick}>
             -
         </button>
     )

@@ -20,13 +20,18 @@ npm install gatsby-theme-stripe-storefront
 
 ## Usage
 
-include it in your gatsby-config.js file at the root of your site:
+Include it in your gatsby-config.js file at the root of your site:
+
 
 ```
 module.exports = {
   plugins: [
     {
-      resolve: 'gatsby-theme-stripe-storefront'
+      resolve: '@dayhaysoos/gatsby-theme-stripe-storefront',
+      options: {
+        stripeSecretKey: process.env.STRIPE_API_SECRET,
+        stripePublicKey: process.env.STRIPE_API_PUBLIC
+      }
     }
   ]
 };

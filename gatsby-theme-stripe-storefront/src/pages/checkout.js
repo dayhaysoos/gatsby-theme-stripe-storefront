@@ -14,27 +14,18 @@ const renderCartItems = (checkoutData) => {
             return (
                 <li sx={{ variant: 'li.checkout.details' }} key={checkoutItem.sku}>
                     <section sx={{ variant: 'section.itemDetails' }}>
-                        <label>{checkoutItem.name}</label>
+                        <p>{checkoutItem.name}</p>
+                        <p>{checkoutItem.sku}</p>
                         <img alt={checkoutItem.name} sx={{ variant: 'img.checkout' }} src={checkoutItem.image} />
+                        <section sx={{variant: 'section.checkout'}}>
+                            <p>Quantity: {checkoutItem.quantity}</p>
+                            <div sx={{variant: 'div.checkout'}}>
+                                <IncrementItemButton skuID={checkoutItem.sku} />
+                                <DecrementItemButton skuID={checkoutItem.sku} />
+                            </div>
+
+                        </section>
                     </section>
-                    <table sx={{ variant: 'table.checkout' }}>
-                        <tbody>
-                            <tr>
-                                <th>Sku</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                            </tr>
-                            <tr>
-                                <td>{checkoutItem.sku}</td>
-                                <td>
-                                    <div>{checkoutItem.quantity}</div>
-                                    <IncrementItemButton skuID={checkoutItem.sku} />
-                                    <DecrementItemButton skuID={checkoutItem.sku} />
-                                </td>
-                                <td>{checkoutItem.price}</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </li>
             )
         })
@@ -87,17 +78,25 @@ const Checkout = () => {
     const formattedCheckoutData = formatCartItems(skus, checkoutData)
 
     return (
-        <Layout>
-            <main sx={{ variant: 'main.checkout' }}>
-                <ul sx={{ variant: 'ul.checkout' }}>
-                    {renderCartItems(formattedCheckoutData)}
-                </ul>
-                <div sx={{ variant: 'div.confirm' }}>
-                    <button onClick={() => navigate('/')} sx={{ variant: 'button.cart' }}>Go Back</button>
-                    <button onClick={() => redirectToCheckout()} sx={{ variant: 'button.cart' }}>Confirm</button>
-                </div>
-            </main>
-        </Layout>
+        checkoutData.length === 0
+            ? (
+                <Layout>
+                        <h2>There are no items in the cart</h2>
+                        <button onClick={() => navigate('/')} sx={{ variant: 'button.cart' }}>Go Back</button>
+                </Layout>
+            )
+            : (
+                <Layout>
+                    <h2>Confirm Purchases</h2>
+                        <ul sx={{ variant: 'ul.checkout' }}>
+                            {renderCartItems(formattedCheckoutData)}
+                        </ul>
+                        <div sx={{ variant: 'div.confirm' }}>
+                            <button onClick={() => navigate('/')} sx={{ variant: 'button.checkout' }}>Go Back</button>
+                            <button onClick={() => redirectToCheckout()} sx={{ variant: 'button.checkout' }}>Confirm</button>
+                        </div>
+                </Layout>
+            )
     )
 }
 

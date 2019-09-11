@@ -9,7 +9,7 @@ const ShoppingCartIcon = () => {
     const { cartCount } = useSkus();
     return (
         <button onClick={() => navigate('/checkout')} sx={{ variant: 'button.cartIcon' }}>
-            <FaShoppingCart color={'rebeccapurple'} size={30} />
+            <FaShoppingCart size={30} />
             {cartCount > 0 && (
                 <span sx={{ variant: 'span.cartCount' }}>{cartCount}</span>
             )}

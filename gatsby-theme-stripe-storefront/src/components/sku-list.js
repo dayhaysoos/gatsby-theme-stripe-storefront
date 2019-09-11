@@ -10,14 +10,12 @@ const renderSkuList = (skus) => (
     <ul sx={{variant: 'ul.skuList'}}>
         {skus.map(sku => (
             <li sx={{variant: 'li.purchaseItem'}} key={sku.id}>
-                <Link sx={{ variant: 'link.image' }} to={sku.slug}>
                     <img alt={sku.name} sx={{variant: 'img.skuList'}} src={sku.image} />
-                </Link>
                 <section sx={{variant: 'section.itemDetails'}}>
                     <p>{sku.name}</p>
                     <p>USD: ${sku.price}</p>
                 </section>
-                <section>
+                <section sx={{variant: 'section.buttonWrapper'}}>
                     <AddItemButton skuID={sku.skuID} />
                     <CheckoutButton />
                 </section>
