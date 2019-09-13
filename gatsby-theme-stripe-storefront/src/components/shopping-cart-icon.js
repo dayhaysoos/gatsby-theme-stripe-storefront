@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import React from 'react';
-import { useSkus } from '../context/shopping-cart';
+import { useCart } from '../context/shopping-cart';
 import { jsx } from 'theme-ui';
 import { navigate } from 'gatsby';
 import { FaShoppingCart } from 'react-icons/fa';
 
 const ShoppingCartIcon = () => {
-    const { cartCount } = useSkus();
+    const { cartCount } = useCart();
     return (
         <button onClick={() => navigate('/checkout')} sx={{ variant: 'button.cartIcon' }}>
             <FaShoppingCart size={30} />

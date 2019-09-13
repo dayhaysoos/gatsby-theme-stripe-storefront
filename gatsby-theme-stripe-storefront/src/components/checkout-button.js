@@ -2,10 +2,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { jsx } from 'theme-ui';
-import { useSkus } from '../context/shopping-cart';
+import { useCart } from '../context/shopping-cart';
 
 const CheckoutButton = () => {
-    const { redirectToCheckout } = useSkus();
+    const { redirectToCheckout } = useCart();
     return (
         <Link to={'/checkout'}>
             <button sx={{ variant: 'button.cart' }}>Checkout</button>

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import { Styled, jsx } from 'theme-ui'
-import { useSkus } from '../context/shopping-cart';
+import { useCart } from '../context/shopping-cart';
 import CheckoutButton from './checkout-button';
 import AddItemButton from './add-item-button';
 

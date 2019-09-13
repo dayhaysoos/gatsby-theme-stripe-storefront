@@ -1,23 +1,43 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
-const manageShoppingCart = (skus) => {
-    const quantifiedSkus = skus.reduce((acc, currentSku) => {
+const buildCart = (skus, { skuID, quantity }) => {
 
-        if (acc.hasOwnProperty(currentSku)) {
-            acc[currentSku] = acc[currentSku] + 1
-        } else {
-            acc[currentSku] = 1
-        }
-
+    if (skus.hasOwnProperty(skuID)) {
         return {
-            ...acc,
+            ...skus,
+            [skuID]: skus[skuID] + quantity
         }
-    }, {})
-    return Object.keys(quantifiedSkus).map(key => ({ sku: key, quantity: quantifiedSkus[key] }))
+    } else {
+        return {
+            ...skus,
+            [skuID]: quantity
+        }
+    }
+}
+
+const formatCart = (checkoutData) => {
+
+    return (
+        Object.keys(checkoutData).map(item =>
+            ({
+                sku: item,
+                quantity: checkoutData[item]
+            })
+        )
+    )
+}
+
+const updateQuantity = (quantity, skuID, skus) => {
+    console.log('help', quantity, skus[skuID])
+    return ({
+        ...skus, 
+        [skuID]: quantity
+    })
+
 }
 
 const removeSku = (skus, action) => {
-    if (skus.skus.includes(action.skuID)) {
+    if (skus.skus.includes(action.sku)) {
         const skuIndex = skus.skus.indexOf(action.skuID)
         skus.skus.splice(skuIndex, 1);
     }
@@ -28,39 +48,48 @@ const removeSku = (skus, action) => {
     }
 }
 
-const reducer = (skus, action) => {
+const reducer = (cart, action) => {
+    const { skus } = cart;
+
     switch (action.type) {
         case 'addItem':
             return {
-                ...skus,
-                skus: skus.skus.concat(action.skuID).sort()
+                ...cart,
+                skus: buildCart(skus, action.sku)
             }
-
-        case 'delete':
-            return removeSku(skus, action);
+        case 'handleQuantityChange':
+                updateQuantity(action.quantity, action.skuID, skus)
+            return {
+                ...cart,
+                skus: updateQuantity(action.quantity, action.skuID, skus)
+            }
 
         default:
             console.error(`unknown action ${action.type}`);
-            return skus;
+            return cart;
     }
 };
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children, stripePublicKey }) => (
-    <CartContext.Provider value={useReducer(reducer, {skus: [], stripePublicKey})}>
+    <CartContext.Provider value={useReducer(reducer, { skus: {}, stripePublicKey })}>
         {children}
     </CartContext.Provider>
 );
 
-export const useSkus = () => {
-    const [{skus, stripePublicKey}, dispatch] = useContext(CartContext);
+export const useCart = () => {
+    const [cart, dispatch] = useContext(CartContext);
 
-    const cartCount = skus.length;
-    const checkoutData = manageShoppingCart(skus);
+    const { skus, stripePublicKey } = cart;
+
+
+    const checkoutData = formatCart(skus);
+    const cartCount = checkoutData.reduce((acc, current) => acc + current.quantity, 0)
     const stripe = window.Stripe(stripePublicKey);
 
-    const addItem = skuID => dispatch({ type: 'addItem', skuID });
+    const addItem = sku => dispatch({ type: 'addItem', sku });
+    const handleQuantityChange = (quantity, skuID) => dispatch({ type:'handleQuantityChange', quantity, skuID })
     const deleteItem = skuID => dispatch({ type: 'delete', skuID });
 
 
@@ -77,5 +106,5 @@ export const useSkus = () => {
 
     }
 
-    return { skus, addItem, deleteItem, cartCount, checkoutData, redirectToCheckout };
+    return { skus, addItem, deleteItem, cartCount, checkoutData, redirectToCheckout, handleQuantityChange };
 };

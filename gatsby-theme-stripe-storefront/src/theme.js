@@ -193,6 +193,9 @@ export const theme = {
                     color: '#ffdf37',
                     border: '1px solid #ffdf37'
                 },
+                '&:active': {
+                    backgroundColor: 'gray.2'
+                }
             }
         }
     },
@@ -268,6 +271,11 @@ export const theme = {
             flexDirection: 'column',
             marginLeft: '5px'
         },
+        closeWindow: {
+            display: 'flex',
+            justifyContent: 'flex-end',
+            margin: '20px',
+        }
     }
 }
 

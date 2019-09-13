@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import React from 'react';
-import { useSkus } from '../context/shopping-cart';
+import { useCart } from '../context/shopping-cart';
 import { jsx } from 'theme-ui';
 
 const AddItemButton = ({ skuID }) => {
-    const { addItem } = useSkus();
+    const { addItem } = useCart();
 
     const handleClick = (e) => {
         e.preventDefault();
-        addItem(skuID)
+        addItem({skuID, quantity: 1})
     }
 
     return (

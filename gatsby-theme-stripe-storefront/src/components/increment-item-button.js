@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import React from 'react';
-import { useSkus } from '../context/shopping-cart';
+import { useCart } from '../context/shopping-cart';
 import { jsx } from 'theme-ui';
 
 const IncrementItemButton = ({ skuID }) => {
-    const { addItem } = useSkus();
+    const { addItem } = useCart();
 
     const handleClick = (e) => {
         addItem(skuID)

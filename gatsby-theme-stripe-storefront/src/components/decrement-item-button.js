@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import React from 'react';
-import { useSkus } from '../context/shopping-cart';
+import { useCart } from '../context/shopping-cart';
 import { jsx } from 'theme-ui';
 
 const DecrementItemButton = ({ skuID }) => {
-    const { deleteItem } = useSkus();
+    const { deleteItem } = useCart();
 
     const handleClick = (e) => {
         deleteItem(skuID)
