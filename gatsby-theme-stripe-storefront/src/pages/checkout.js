@@ -7,14 +7,15 @@ import { graphql, useStaticQuery, navigate } from 'gatsby';
 import { FaWindowClose } from 'react-icons/fa';
 import QuantityInput from '../components/quantity-input';
 
-const renderCartItems = (checkoutData) => {
+const renderCartItems = (checkoutData, deleteItem) => {
+    
 
     return (
         checkoutData.map(checkoutItem => {
             return (
                 <li sx={{ variant: 'li.checkout.details' }} key={checkoutItem.sku}>
                     <div sx={{variant: 'div.closeWindow'}}>
-                        <button>
+                        <button onClick={() => deleteItem(checkoutItem.sku)} sx={{variant: 'button.checkout.closeWindow'}}>
                             <FaWindowClose size={30} />
                         </button>
                     </div>
@@ -76,7 +77,7 @@ const Checkout = () => {
     const skus = data.allStripeSku.nodes;
 
 
-    const { checkoutData, redirectToCheckout } = useCart();
+    const { checkoutData, redirectToCheckout, deleteItem } = useCart();
 
     const formattedCheckoutData = formatCartItems(skus, checkoutData)
 
@@ -92,7 +93,7 @@ const Checkout = () => {
                 <Layout>
                     <h2>Confirm Purchases</h2>
                     <ul sx={{ variant: 'ul.checkout' }}>
-                        {renderCartItems(formattedCheckoutData)}
+                        {renderCartItems(formattedCheckoutData, deleteItem)}
                     </ul>
                     <div sx={{ variant: 'div.confirm' }}>
                         <button onClick={() => navigate('/')} sx={{ variant: 'button.checkout' }}>Go Back</button>

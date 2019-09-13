@@ -17,6 +17,7 @@ const QuantityInput = ({ quantity, skuID }) => {
             <input
                 defaultValue={inputValue}
                 onChange={(e) => updateInputValue(e, skuID)} type='number'
+                min={1}
             />
         </div>
     )

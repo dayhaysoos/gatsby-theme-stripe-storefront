@@ -11,7 +11,8 @@ export const theme = {
     colors: {
         gray: ['#efefef', '#ddd', '#333', '#111'],
         background: '#fff',
-        primary: 'rebeccapurple'
+        primary: 'rebeccapurple',
+        secondary: '#ffdf37'
     },
     sizes: {
         default: '100%',
@@ -88,11 +89,12 @@ export const theme = {
             position: 'absolute',
             right: 0,
             top: '8px',
-            border: '1px solid yellow',
+            border: '1px solid',
+            borderColor: 'secondary',
             borderRadius: '50%',
             width: '18px',
-            backgroundColor: '#ffdf37',
-            color: 'rebeccapurple',
+            backgroundColor: 'secondary',
+            color: 'primary',
             fontSize: '15px'
         }
     },
@@ -150,8 +152,9 @@ export const theme = {
             outline: 'none',
             minWidth: '70px',
             '&:hover': {
-                color: '#ffdf37',
-                border: '1px solid #ffdf37'
+                color: 'secondary',
+                border: '1px solid',
+                borderColor: 'secondary'
             }
         },
         cartIcon: {
@@ -180,8 +183,9 @@ export const theme = {
             outline: 'none',
             borderRadius: '10px',
             '&:hover': {
-                color: '#ffdf37',
-                border: '1px solid #ffdf37'
+                color: 'secondary',
+                border: '1px solid',
+                borderColor: 'secondary'
             },
             addRemove: {
                 backgroundColor: 'primary',
@@ -190,11 +194,25 @@ export const theme = {
                 transition: 'all .5s ease',
                 outline: 'none',
                 '&:hover': {
-                    color: '#ffdf37',
-                    border: '1px solid #ffdf37'
+                    color: 'secondary',
+                    border: '1px solid',
+                    borderColor: 'secondary'
                 },
                 '&:active': {
                     backgroundColor: 'gray.2'
+                }
+            },
+            closeWindow: {
+                backgroundColor: 'none',
+                color: 'primary',
+                fontSize: '18px',
+                outline: 'none',
+                border: 'none',
+                '&:hover': {
+                    transform: 'scale(1.1)',
+                },
+                '&:active': {
+                    backgroundColor: 'secondary'
                 }
             }
         }

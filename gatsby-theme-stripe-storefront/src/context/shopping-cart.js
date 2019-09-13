@@ -28,7 +28,6 @@ const formatCart = (checkoutData) => {
 }
 
 const updateQuantity = (quantity, skuID, skus) => {
-    console.log('help', quantity, skus[skuID])
     return ({
         ...skus, 
         [skuID]: quantity
@@ -36,16 +35,11 @@ const updateQuantity = (quantity, skuID, skus) => {
 
 }
 
-const removeSku = (skus, action) => {
-    if (skus.skus.includes(action.sku)) {
-        const skuIndex = skus.skus.indexOf(action.skuID)
-        skus.skus.splice(skuIndex, 1);
-    }
+const removeSku = (skuID, skus) => {
 
-    return {
-        ...skus,
-        skus: skus.skus.map(sku => sku)
-    }
+    delete skus[skuID]
+
+    return skus;
 }
 
 const reducer = (cart, action) => {
@@ -62,6 +56,11 @@ const reducer = (cart, action) => {
             return {
                 ...cart,
                 skus: updateQuantity(action.quantity, action.skuID, skus)
+            }
+        case 'delete':
+            return {
+                ...cart,
+                skus: removeSku(action.skuID, skus)
             }
 
         default:
