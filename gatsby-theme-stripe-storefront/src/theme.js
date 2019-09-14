@@ -86,16 +86,20 @@ export const theme = {
     },
     span: {
         cartCount: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
             position: 'absolute',
             right: 0,
-            top: '8px',
+            top: '3px',
             border: '1px solid',
             borderColor: 'secondary',
             borderRadius: '50%',
-            width: '18px',
+            height: '24px',
+            width: '24px',
             backgroundColor: 'secondary',
             color: 'primary',
-            fontSize: '15px'
+            fontSize: '.75rem'
         }
     },
     li: {
@@ -171,6 +175,7 @@ export const theme = {
             transition: 'all .2s ease',
             fontWeight: '800',
             outline: 'none',
+            fontSize: '1.1rem',
             '&:hover': {
                 transform: 'scale(1.1)'
             },
