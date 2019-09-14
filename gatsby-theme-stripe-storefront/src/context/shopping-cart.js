@@ -91,7 +91,6 @@ export const useCart = () => {
     const handleQuantityChange = (quantity, skuID) => dispatch({ type:'handleQuantityChange', quantity, skuID })
     const deleteItem = skuID => dispatch({ type: 'delete', skuID });
 
-
     const redirectToCheckout = async () => {
 
         const { error } = await stripe.redirectToCheckout({

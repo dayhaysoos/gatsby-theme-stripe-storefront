@@ -3,7 +3,7 @@ import React from 'react';
 import { useCart } from '../context/shopping-cart';
 import { jsx } from 'theme-ui';
 import { navigate } from 'gatsby';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaImage } from 'react-icons/fa';
 
 const ShoppingCartIcon = () => {
     const { cartCount } = useCart();

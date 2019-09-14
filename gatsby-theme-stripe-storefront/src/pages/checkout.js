@@ -6,6 +6,7 @@ import { useCart } from '../context/shopping-cart';
 import { graphql, useStaticQuery, navigate } from 'gatsby';
 import { FaWindowClose } from 'react-icons/fa';
 import QuantityInput from '../components/quantity-input';
+import { FaImage } from 'react-icons/fa';
 
 const renderCartItems = (checkoutData, deleteItem) => {
     
@@ -21,7 +22,7 @@ const renderCartItems = (checkoutData, deleteItem) => {
                     </div>
                     <section sx={{ variant: 'section.itemDetails' }}>
                         <p>{checkoutItem.name}</p>
-                        <img alt={checkoutItem.name} sx={{ variant: 'img.checkout' }} src={checkoutItem.image} />
+                        {checkoutItem.image === 'no-image' ? <FaImage size={200}/> : <img alt={checkoutItem.name} sx={{ variant: 'img.skuList' }} src={checkoutItem.image} />}
                         <section sx={{ variant: 'section.checkout' }}>
                             <QuantityInput
                                 quantity={checkoutItem.quantity}

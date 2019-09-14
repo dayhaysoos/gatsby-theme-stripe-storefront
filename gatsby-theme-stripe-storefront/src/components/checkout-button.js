@@ -5,7 +5,6 @@ import { jsx } from 'theme-ui';
 import { useCart } from '../context/shopping-cart';
 
 const CheckoutButton = () => {
-    const { redirectToCheckout } = useCart();
     return (
         <Link to={'/checkout'}>
             <button sx={{ variant: 'button.cart' }}>Checkout</button>
