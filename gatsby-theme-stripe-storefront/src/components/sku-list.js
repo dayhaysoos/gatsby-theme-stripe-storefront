@@ -20,8 +20,8 @@ const renderSkuList = (skus, cartCount) => {
                         <p>USD: ${sku.price}</p>
                     </section>
                     <section sx={{ variant: 'section.buttonWrapper' }}>
-                        <AddItemButton skuID={sku.skuID} />
-                        {(cartCount > 0 && <CheckoutButton /> )}
+                        <AddItemButton sku={sku} />
+                        <CheckoutButton />
                     </section>
                 </li>
             ))}

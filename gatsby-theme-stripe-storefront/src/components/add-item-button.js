@@ -3,12 +3,13 @@ import React from 'react';
 import { useCart } from '../context/shopping-cart';
 import { jsx } from 'theme-ui';
 
-const AddItemButton = ({ skuID }) => {
+const AddItemButton = ({sku}) => {
+    const { skuID } = sku;
     const { addItem } = useCart();
 
     const handleClick = (e) => {
         e.preventDefault();
-        addItem({skuID, quantity: 1})
+        addItem({skuID, quantity: 1, test: 'test'})
     }
 
     return (
