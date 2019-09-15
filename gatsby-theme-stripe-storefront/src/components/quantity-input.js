@@ -1,6 +1,4 @@
 import React, { useState} from 'react';
-import IncrementItemButton from './increment-item-button';
-import DecrementItemButton from './decrement-item-button';
 import { useCart } from '../context/shopping-cart';
 
 const QuantityInput = ({ quantity, skuID }) => {

@@ -8,8 +8,8 @@
         "develop": "gatsby develop"
     },
     "dependencies": {
-        "gatsby": "^2.13.68",
-        "@dayhaysoos/gatsby-theme-stripe-storefront": "0.1.0",
+        "@dayhaysoos/gatsby-theme-stripe-storefront": "0.1.2",
+        "gatsby": "^2.15.15",
         "react": "^16.9.0",
         "react-dom": "^16.9.0"
     }

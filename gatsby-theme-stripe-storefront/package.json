@@ -9,7 +9,7 @@
         "develop": "gatsby develop"
     },
     "devDependencies": {
-        "gatsby": "^2.13.68",
+        "gatsby": "^2.15.15",
         "react": "^16.9.0",
         "react-dom": "^16.9.0"
     },
@@ -19,18 +19,18 @@
         "react-dom": "^16.9.0"
     },
     "dependencies": {
-        "@emotion/core": "^10.0.16",
-        "@emotion/styled": "^10.0.15",
-        "@mdx-js/react": "^1.3.1",
+        "@emotion/core": "^10.0.17",
+        "@emotion/styled": "^10.0.17",
+        "@mdx-js/react": "^1.4.5",
         "axios": "^0.19.0",
         "dotenv": "^8.1.0",
-        "gatsby-plugin-page-creator": "^2.1.16",
-        "gatsby-plugin-stripe": "^1.2.2",
-        "gatsby-plugin-theme-ui": "^0.2.34",
-        "gatsby-source-filesystem": "^2.1.9",
-        "gatsby-source-graphql": "^2.1.5",
-        "gatsby-transformer-yaml": "^2.2.4",
+        "gatsby-plugin-page-creator": "^2.1.17",
+        "gatsby-plugin-stripe": "^1.2.3",
+        "gatsby-plugin-theme-ui": "^0.2.41",
+        "gatsby-source-filesystem": "^2.1.22",
+        "gatsby-source-graphql": "^2.1.14",
+        "gatsby-transformer-yaml": "^2.2.9",
         "react-icons": "^3.7.0",
-        "theme-ui": "^0.2.35"
+        "theme-ui": "^0.2.42"
     }
 }
