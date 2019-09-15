@@ -5,9 +5,14 @@ import { jsx } from 'theme-ui';
 import { useCart } from '../context/shopping-cart';
 
 const CheckoutButton = () => {
+    const { cartCount } = useCart();
     return (
         <Link to={'/checkout'}>
-            <button sx={{ variant: 'button.cart' }}>Checkout</button>
+            <button
+                disabled={!cartCount > 0}
+                sx={{ variant: cartCount > 0 ? 'button.cart' : 'button.disabled' }}>
+                Checkout
+            </button>
         </Link>
     )
 }

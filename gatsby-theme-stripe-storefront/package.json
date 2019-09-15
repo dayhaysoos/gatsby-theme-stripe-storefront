@@ -24,6 +24,7 @@
         "@mdx-js/react": "^1.4.5",
         "axios": "^0.19.0",
         "dotenv": "^8.1.0",
+        "formik": "^1.5.8",
         "gatsby-plugin-page-creator": "^2.1.17",
         "gatsby-plugin-stripe": "^1.2.3",
         "gatsby-plugin-theme-ui": "^0.2.41",
@@ -31,6 +32,7 @@
         "gatsby-source-graphql": "^2.1.14",
         "gatsby-transformer-yaml": "^2.2.9",
         "react-icons": "^3.7.0",
-        "theme-ui": "^0.2.42"
+        "theme-ui": "^0.2.42",
+        "yup": "^0.27.0"
     }
 }

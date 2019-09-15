@@ -7,22 +7,24 @@ import { graphql, useStaticQuery, navigate } from 'gatsby';
 import { FaWindowClose } from 'react-icons/fa';
 import QuantityInput from '../components/quantity-input';
 import { FaImage } from 'react-icons/fa';
+import { Formik, Form, Field, FieldArray } from 'formik';
+import * as Yup from 'yup';
 
 const renderCartItems = (checkoutData, deleteItem) => {
-    
+
 
     return (
         checkoutData.map(checkoutItem => {
             return (
                 <li sx={{ variant: 'li.checkout.details' }} key={checkoutItem.sku}>
-                    <div sx={{variant: 'div.closeWindow'}}>
-                        <button onClick={() => deleteItem(checkoutItem.sku)} sx={{variant: 'button.checkout.closeWindow'}}>
+                    <div sx={{ variant: 'div.closeWindow' }}>
+                        <button onClick={() => deleteItem(checkoutItem.sku)} sx={{ variant: 'button.checkout.closeWindow' }}>
                             <FaWindowClose size={30} />
                         </button>
                     </div>
                     <section sx={{ variant: 'section.itemDetails' }}>
+                        {checkoutItem.image === 'no-image' ? <FaImage size={200} /> : <img alt={checkoutItem.name} sx={{ variant: 'img.skuList' }} src={checkoutItem.image} />}
                         <p>{checkoutItem.name}</p>
-                        {checkoutItem.image === 'no-image' ? <FaImage size={200}/> : <img alt={checkoutItem.name} sx={{ variant: 'img.skuList' }} src={checkoutItem.image} />}
                         <section sx={{ variant: 'section.checkout' }}>
                             <QuantityInput
                                 quantity={checkoutItem.quantity}
@@ -78,30 +80,100 @@ const Checkout = () => {
     const skus = data.allStripeSku.nodes;
 
 
-    const { checkoutData, redirectToCheckout, deleteItem } = useCart();
+    const { checkoutData, redirectToCheckout, deleteItem, handleQuantityChange } = useCart();
+
+    const updateInputValue = (e, skuID) => {
+        const { value } = e.target;
+        handleQuantityChange(parseInt(value), skuID)
+    }
 
     const formattedCheckoutData = formatCartItems(skus, checkoutData)
 
+    const handleSubmit = async ({items}) => {
+        await items.forEach(item => item.quantity === 0 ? deleteItem(item.sku) : null)
+
+        redirectToCheckout('auto')
+    }
+
     return (
-        checkoutData.length === 0
-            ? (
-                <Layout>
-                    <h2>There are no items in the cart</h2>
-                    <button onClick={() => navigate('/')} sx={{ variant: 'button.cart' }}>Go Back</button>
-                </Layout>
-            )
-            : (
-                <Layout>
-                    <h2>Confirm Purchases</h2>
-                    <ul sx={{ variant: 'ul.checkout' }}>
-                        {renderCartItems(formattedCheckoutData, deleteItem)}
-                    </ul>
-                    <div sx={{ variant: 'div.confirm' }}>
-                        <button onClick={() => navigate('/')} sx={{ variant: 'button.checkout' }}>Go Back</button>
-                        <button onClick={() => redirectToCheckout()} sx={{ variant: 'button.checkout' }}>Confirm</button>
-                    </div>
-                </Layout>
-            )
+        <Layout>
+            <Formik
+                initialValues={{ items: formattedCheckoutData }}
+                enableReinitialize={true}
+                onSubmit={handleSubmit}
+                validateOnChange={true}
+                validationSchema={Yup.object().shape({
+                    items: Yup.array()
+                        .of(
+                            Yup.object().shape({
+                                quantity: Yup.number()
+                                    .required('Required')
+                            })
+                        )
+                        .required(`You're making a mistake`)
+                })}
+                render={({ values, errors, dirty, touched }) => (
+                    <Form>
+                        <FieldArray
+                            name={'items'}
+                            render={() => (
+                                <div sx={{ variant: 'ul.checkout' }}>
+                                    {values.items && values.items.length > 0 ? (
+                                        values.items.map((item, index) => (
+                                            <li sx={{ variant: 'li.checkout.details' }} key={item.sku}>
+                                                <div sx={{ variant: 'div.closeWindow' }}>
+                                                    <button
+                                                        type="submit"
+                                                        onClick={() => deleteItem(item.sku)}
+                                                        sx={{ variant: 'button.checkout.closeWindow' }}
+                                                    >
+                                                        <FaWindowClose size={30} />
+                                                    </button>
+                                                </div>
+                                                <section sx={{ variant: 'section.itemDetails' }}>
+                                                    {item.image === 'no-image' ? <FaImage size={200} /> : <img alt={item.name} sx={{ variant: 'img.skuList' }} src={item.image} />}
+                                                    <p>{item.name}</p>
+                                                    <section sx={{ variant: 'section.checkout' }}>
+                                                        <div key={index}>
+                                                            <Field
+                                                                sx={{variant: 'field.checkout'}}
+                                                                type='number'
+                                                                placeholder={'Enter Amount'}
+                                                                name={item.name}
+                                                                onChange={(e) => updateInputValue(e, item.sku)}
+                                                                defaultValue={item.quantity}
+                                                                min={0}
+                                                            />
+                                                            {console.log(errors, touched)}
+                                                        </div>
+
+                                                    </section>
+                                                </section>
+                                            </li>
+                                        ))
+                                    ) : (
+                                            <div>
+                                                <h1>No Items In Cart</h1>
+                                            </div>
+                                        )}
+                                </div>
+                            )}
+                        />
+                        <button type="submit" onClick={() => navigate('/')} sx={{ variant: 'button.checkout' }}>Go Back</button>
+                        {checkoutData.length > 0 ?
+                            <button
+                                sx={{ variant: 'button.checkout' }}
+                                type="submit"
+                                >
+                                Proceed to Checkout
+                        </button>
+                            :
+                            null
+                        }
+                    </Form>
+                )}
+            />
+        </Layout>
     )
 }
 

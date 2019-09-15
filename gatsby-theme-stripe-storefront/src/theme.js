@@ -145,6 +145,17 @@ export const theme = {
         }
     },
     button: {
+        disabled: {
+            backgroundColor: 'gray.1',
+            color: 'primary',
+            height: '40px',
+            borderRadius: '10px',
+            fontSize: '16px',
+            margin: '0 10px',
+            transition: 'all .5s ease',
+            outline: 'none',
+            minWidth: '70px',
+        },
         cart: {
             backgroundColor: 'primary',
             color: 'gray.0',
@@ -280,6 +291,12 @@ export const theme = {
             '&:focus-within, &:hover': {
                 transform: 'scale(1.1)',
             },
+        }
+    },
+    field: {
+        checkout: {},
+        error: {
+            color: 'red'
         }
     },
     div: {

@@ -21,7 +21,7 @@ const formatCart = (checkoutData) => {
         Object.keys(checkoutData).map(item =>
             ({
                 sku: item,
-                quantity: checkoutData[item]
+                quantity: checkoutData[item],
             })
         )
     )
@@ -44,6 +44,9 @@ const removeSku = (skuID, skus) => {
 
 const reducer = (cart, action) => {
     const { skus } = cart;
+
+
+    console.log('ACTION', cart, action)
 
     switch (action.type) {
         case 'addItem':
@@ -91,12 +94,13 @@ export const useCart = () => {
     const handleQuantityChange = (quantity, skuID) => dispatch({ type:'handleQuantityChange', quantity, skuID })
     const deleteItem = skuID => dispatch({ type: 'delete', skuID });
 
-    const redirectToCheckout = async () => {
+    const redirectToCheckout = async (submitType = 'auto') => {
 
         const { error } = await stripe.redirectToCheckout({
             items: checkoutData,
             successUrl: `http://localhost:8000/`,
             cancelUrl: `http://localhost:8000/`,
+            submitType
         })
         if (error) {
             console.warn("Error:", error)
