@@ -12,4 +12,15 @@ module.exports = {
       },
     },
   ],
+  siteMetadata: {
+    title: `Gatsby Theme Stripe Storefront`,
+    author: `Nick DeJesus`,
+    description: ``,
+    social: [
+      {
+        name: `twitter`,
+        url: `https://twitter.com/resilientcoders`,
+      },
+    ],
+  },
 }
