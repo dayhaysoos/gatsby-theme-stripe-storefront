@@ -194,10 +194,13 @@ export const theme = {
         checkout: {
             backgroundColor: 'primary',
             color: 'gray.0',
-            fontSize: '18px',
+            height: '40px',
+            borderRadius: '10px',
+            fontSize: '16px',
+            margin: '0 10px',
             transition: 'all .5s ease',
             outline: 'none',
-            borderRadius: '10px',
+            minWidth: '70px',
             '&:hover': {
                 color: 'secondary',
                 border: '1px solid',

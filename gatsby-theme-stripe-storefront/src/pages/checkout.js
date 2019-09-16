@@ -97,6 +97,7 @@ const Checkout = () => {
 
     return (
         <Layout>
+            <h1>Confirm Purchase</h1>
             <Formik
                 initialValues={{ items: formattedCheckoutData }}
                 enableReinitialize={true}
@@ -144,7 +145,6 @@ const Checkout = () => {
                                                                 defaultValue={item.quantity}
                                                                 min={0}
                                                             />
-                                                            {console.log(errors, touched)}
                                                         </div>
 
                                                     </section>
@@ -162,8 +162,9 @@ const Checkout = () => {
                         <button type="submit" onClick={() => navigate('/')} sx={{ variant: 'button.checkout' }}>Go Back</button>
                         {checkoutData.length > 0 ?
                             <button
-                                sx={{ variant: 'button.checkout' }}
+                                sx={{ variant: errors.items ? 'button.disabled' : 'button.checkout' }}
                                 type="submit"
+                                disabled={errors.items ? true : false}
                                 >
                                 Proceed to Checkout
                         </button>

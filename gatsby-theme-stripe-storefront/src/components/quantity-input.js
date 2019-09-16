@@ -36,7 +36,6 @@ const QuantityInput = ({ quantity, skuID }) => {
                     handleReset,
                 } = props;
 
-                console.log('hey', props)
                 return (
                     <form>
                         <label htmlFor="quantity" style={{ display: 'block' }}>

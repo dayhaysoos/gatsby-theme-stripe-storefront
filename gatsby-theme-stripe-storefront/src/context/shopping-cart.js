@@ -45,9 +45,6 @@ const removeSku = (skuID, skus) => {
 const reducer = (cart, action) => {
     const { skus } = cart;
 
-
-    console.log('ACTION', cart, action)
-
     switch (action.type) {
         case 'addItem':
             return {
