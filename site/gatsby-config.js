@@ -1,6 +1,6 @@
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
-});
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   plugins: [
@@ -8,8 +8,8 @@ module.exports = {
       resolve: '@dayhaysoos/gatsby-theme-stripe-storefront',
       options: {
         stripeSecretKey: process.env.STRIPE_API_SECRET,
-        stripePublicKey: process.env.STRIPE_API_PUBLIC
-      }
-    }
-  ]
-};
+        stripePublicKey: process.env.STRIPE_API_PUBLIC,
+      },
+    },
+  ],
+}

@@ -1,8 +1,8 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const axios = require("axios")
+const axios = require('axios')
 
 const formatPrice = num => {
   const price = (num / 100).toFixed(2)
@@ -15,23 +15,23 @@ exports.sourceNodes = async (
   themeOptions
 ) => {
   const result = await axios({
-    method: "GET",
-    url: "https://api.stripe.com/v1/skus",
+    method: 'GET',
+    url: 'https://api.stripe.com/v1/skus',
     headers: {
       Authorization: `Bearer ${themeOptions.stripeSecretKey}`,
     },
   })
 
   const plans = await axios({
-    method: "GET",
-    url: "https://api.stripe.com/v1/plans",
+    method: 'GET',
+    url: 'https://api.stripe.com/v1/plans',
     headers: {
       Authorization: `Bearer ${themeOptions.stripeSecretKey}`,
     },
   })
 
   if (result.errors) {
-    reporter.panic("Error loading skus", JSON.stringify(result.errors))
+    reporter.panic('Error loading skus', JSON.stringify(result.errors))
   }
 
   const skuList = result.data
@@ -48,9 +48,9 @@ exports.sourceNodes = async (
       id: createNodeId(`Stripe-${sku.id}`),
       name: sku.attributes.name,
       slug: sku.attributes.name,
-      image: sku.image ? sku.image : "no-image",
+      image: sku.image ? sku.image : 'no-image',
       internal: {
-        type: "StripeSku",
+        type: 'StripeSku',
         contentDigest: createContentDigest(sku),
       },
     }
@@ -67,9 +67,9 @@ exports.sourceNodes = async (
       id: createNodeId(`Stripe-${plan.id}`),
       name: plan.nickname,
       slug: plan.nickname,
-      image: plan.image ? plan.image : "no-image",
+      image: plan.image ? plan.image : 'no-image',
       internal: {
-        type: "StripePlan",
+        type: 'StripePlan',
         contentDigest: createContentDigest(plan),
       },
     }
@@ -82,16 +82,16 @@ exports.sourceNodes = async (
 
 // create url slug for each product
 exports.createResolvers = ({ createResolvers }, options) => {
-  const basePath = options.basePath || "/"
+  const basePath = options.basePath || '/'
 
   // Quick-and-dirty helper to convert strings into URL-friendly slugs.
   const slugify = str => {
     const slug = str
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)+/g, "")
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '')
 
-    return `/${basePath}/${slug}`.replace(/\/\/+/g, "/")
+    return `/${basePath}/${slug}`.replace(/\/\/+/g, '/')
   }
 
   // reformat "slug" value in this resolver
@@ -110,11 +110,11 @@ exports.createResolvers = ({ createResolvers }, options) => {
 // create pages for each item
 
 exports.createPages = async ({ actions, graphql, reporter }, options) => {
-  const basePath = options.basePath || "/"
+  const basePath = options.basePath || '/'
 
   actions.createPage({
     path: basePath,
-    component: require.resolve("./src/templates/plans.js"),
+    component: require.resolve('./src/templates/plans.js'),
   })
 
   const result = await graphql(`
@@ -133,7 +133,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   `)
 
   if (result.erros) {
-    reporter.panic("error loading products", reporter.errors)
+    reporter.panic('error loading products', reporter.errors)
   }
 
   const skus = result.data.allStripeSku.nodes
@@ -143,7 +143,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
 
     actions.createPage({
       path: slug,
-      component: require.resolve("./src/templates/sku.js"),
+      component: require.resolve('./src/templates/sku.js'),
       context: {
         slug,
       },

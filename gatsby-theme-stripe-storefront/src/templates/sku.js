@@ -1,11 +1,11 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import Layout from '../components/layout';
-import Sku from '../components/sku';
+import React from 'react'
+import { graphql } from 'gatsby'
+import Layout from '../components/layout'
+import Sku from '../components/sku'
 
 export const query = graphql`
   query($slug: String!) {
-    stripeSku(slug: { eq: $slug } ) {
+    stripeSku(slug: { eq: $slug }) {
       price
       name
       price
@@ -17,12 +17,10 @@ export const query = graphql`
   }
 `
 
-
 const SkuTemplate = ({ data: { stripeSku } }) => (
   <Layout>
     <Sku {...stripeSku} />
   </Layout>
-);
+)
 
-
-export default SkuTemplate;
+export default SkuTemplate

@@ -1,5 +1,5 @@
-const React = require("react")
-const { CartProvider } = require("./src/context/shopping-cart")
+const React = require('react')
+const { CartProvider } = require('./src/context/shopping-cart')
 
 exports.wrapRootElement = ({ element }, { stripePublicKey }) => {
   return (

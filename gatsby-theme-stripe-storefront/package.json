@@ -1,38 +1,38 @@
 {
-    "name": "@dayhaysoos/gatsby-theme-stripe-storefront",
-    "version": "0.2.1",
-    "main": "index.js",
-    "license": "MIT",
-    "scripts": {
-        "build": "gatsby build",
-        "clean": "gatsby clean",
-        "develop": "gatsby develop"
-    },
-    "devDependencies": {
-        "gatsby": "^2.15.15",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0"
-    },
-    "peerDependencies": {
-        "gatsby": "^2.13.68",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0"
-    },
-    "dependencies": {
-        "@emotion/core": "^10.0.17",
-        "@emotion/styled": "^10.0.17",
-        "@mdx-js/react": "^1.4.5",
-        "axios": "^0.19.0",
-        "dotenv": "^8.1.0",
-        "formik": "^1.5.8",
-        "gatsby-plugin-page-creator": "^2.1.17",
-        "gatsby-plugin-stripe": "^1.2.3",
-        "gatsby-plugin-theme-ui": "^0.2.41",
-        "gatsby-source-filesystem": "^2.1.22",
-        "gatsby-source-graphql": "^2.1.14",
-        "gatsby-transformer-yaml": "^2.2.9",
-        "react-icons": "^3.7.0",
-        "theme-ui": "^0.2.42",
-        "yup": "^0.27.0"
-    }
+  "name": "@dayhaysoos/gatsby-theme-stripe-storefront",
+  "version": "0.2.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop"
+  },
+  "devDependencies": {
+    "gatsby": "^2.15.15",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.13.68",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.17",
+    "@emotion/styled": "^10.0.17",
+    "@mdx-js/react": "^1.4.5",
+    "axios": "^0.19.0",
+    "dotenv": "^8.1.0",
+    "formik": "^1.5.8",
+    "gatsby-plugin-page-creator": "^2.1.17",
+    "gatsby-plugin-stripe": "^1.2.3",
+    "gatsby-plugin-theme-ui": "^0.2.41",
+    "gatsby-source-filesystem": "^2.1.22",
+    "gatsby-source-graphql": "^2.1.14",
+    "gatsby-transformer-yaml": "^2.2.9",
+    "react-icons": "^3.7.0",
+    "theme-ui": "^0.2.42",
+    "yup": "^0.27.0"
+  }
 }
