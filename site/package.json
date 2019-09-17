@@ -1,16 +1,16 @@
 {
-    "name": "site",
-    "version": "1.0.0",
-    "license": "MIT",
-    "scripts": {
-        "build": "gatsby build",
-        "clean": "gatsby clean",
-        "develop": "gatsby develop"
-    },
-    "dependencies": {
-        "@dayhaysoos/gatsby-theme-stripe-storefront": "0.1.2",
-        "gatsby": "^2.15.15",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0"
-    }
+  "name": "site",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop"
+  },
+  "dependencies": {
+    "@dayhaysoos/gatsby-theme-stripe-storefront": "0.1.2",
+    "gatsby": "^2.15.15",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
 }

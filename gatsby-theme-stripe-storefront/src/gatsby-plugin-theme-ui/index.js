@@ -1,3 +1,7 @@
-import { theme } from '../theme';
+import { theme } from "../theme"
+import { planTheme } from "../planTheme"
 
-export default theme;
+export default {
+  theme,
+  planTheme,
+}

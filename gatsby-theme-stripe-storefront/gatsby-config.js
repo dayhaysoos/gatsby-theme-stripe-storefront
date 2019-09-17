@@ -1,10 +1,9 @@
-
 require("dotenv").config()
 
 module.exports = {
   plugins: [
-    'gatsby-plugin-theme-ui',
-    'gatsby-plugin-stripe',
+    "gatsby-plugin-theme-ui",
+    "gatsby-plugin-stripe",
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {

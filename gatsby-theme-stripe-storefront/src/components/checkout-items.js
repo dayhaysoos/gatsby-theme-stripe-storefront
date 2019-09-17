@@ -5,7 +5,6 @@ import { jsx } from 'theme-ui';
 import { useCart } from '../context/shopping-cart';
 import { graphql, useStaticQuery, navigate } from 'gatsby';
 import { FaWindowClose } from 'react-icons/fa';
-import QuantityInput from '../components/quantity-input';
 import { FaImage } from 'react-icons/fa';
 import { Formik, Form, Field, FieldArray } from 'formik';
 import * as Yup from 'yup';

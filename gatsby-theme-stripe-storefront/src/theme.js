@@ -1,4 +1,7 @@
+import planTheme from './planTheme';
+
 export const theme = {
+    ...planTheme,
     space: [0, 4, 8, 1, 32],
     fonts: {
         body: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif'
@@ -11,8 +14,8 @@ export const theme = {
     colors: {
         gray: ['#efefef', '#ddd', '#333', '#111'],
         background: '#fff',
-        primary: 'rebeccapurple',
-        secondary: '#ffdf37'
+        primary: 'rgba(102,51,153)',
+        secondary: '#ffdf37',
     },
     sizes: {
         default: '100%',
@@ -132,7 +135,8 @@ export const theme = {
             display: 'flex',
             flexDirection: 'column',
             transition: 'all .2s ease',
-            boxShadow: '2px 10px 10px gray',
+            boxShadow: '0 0 10px',
+            boxShadowColor: 'primary',
             justifyContent: 'center',
             alignItems: 'center',
             maxWidth: 360,
@@ -140,7 +144,6 @@ export const theme = {
             flexShrink: 1,
             flexBasis: '20%',
             '&:focus-within, &:hover': {
-                color: 'primary'
             },
         }
     },

@@ -4,21 +4,21 @@ import Layout from '../components/layout';
 import SkuList from '../components/sku-list';
 
 const SkusTemplate = () => {
-
+  
   const data = useStaticQuery(graphql`
-    query {
-      allStripeSku {
-        nodes {
-          name
-          price
-          currency
-          slug
-          image
-          skuID
-        }
+  query {
+    allStripeSku {
+      nodes {
+        name
+        price
+        currency
+        slug
+        image
+        skuID
       }
     }
-  `);
+  }
+`);
 
   const skus = data.allStripeSku.nodes;
 
