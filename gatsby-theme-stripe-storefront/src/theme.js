@@ -14,7 +14,7 @@ export const theme = {
   colors: {
     gray: ['#efefef', '#ddd', '#333', '#111'],
     background: '#fff',
-    primary: 'rgba(102,51,153)',
+    primary: 'rebeccapurple',
     secondary: '#ffdf37',
   },
   sizes: {
@@ -158,6 +158,14 @@ export const theme = {
       outline: 'none',
       minWidth: '70px',
     },
+    donationOption: {
+      color: 'primary',
+      backgroundColor: 'gray.1',
+      height: '50px',
+      borderRadius: '5px',
+      fontSize: '24px',
+      margin: '10px 10px',
+    },
     cart: {
       backgroundColor: 'primary',
       color: 'gray.0',
@@ -256,6 +264,9 @@ export const theme = {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    donateForm: {
+      width: '300px',
     },
   },
   main: {

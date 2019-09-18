@@ -1,8 +1,13 @@
 const React = require('react')
 const { CartProvider } = require('./src/context/shopping-cart')
+const { DonateProvider } = require('./src/context/donate-form')
 
 exports.wrapRootElement = ({ element }, { stripePublicKey }) => {
   return (
-    <CartProvider stripePublicKey={stripePublicKey}>{element}</CartProvider>
+    <CartProvider stripePublicKey={stripePublicKey}>
+      <DonateProvider stripePublicKey={stripePublicKey}>
+        {element}
+      </DonateProvider>
+    </CartProvider>
   )
 }

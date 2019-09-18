@@ -114,7 +114,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
 
   actions.createPage({
     path: basePath,
-    component: require.resolve('./src/templates/plans.js'),
+    component: require.resolve('./src/templates/donate-form.js'),
   })
 
   const result = await graphql(`
