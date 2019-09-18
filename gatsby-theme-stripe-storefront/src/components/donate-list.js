@@ -3,38 +3,38 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 import { Formik, Field } from 'formik'
 import { formatPrice } from '../util/formatPrice'
-import { useDonate } from '../context/donate-form'
+import { useCart } from '../context/shopping-cart'
 
-const PlanList = ({ plans }) => {
-  const { storeLastClicked, lastClicked, redirectToCheckout } = useDonate()
+const DonateList = ({ skus }) => {
+  const { storeLastClicked, lastClicked, redirectToDonate } = useCart()
 
   return (
-    <main sx={{ variant: 'planList.main' }}>
+    <>
       <div sx={{ variant: 'planList.div' }}>
-        {plans.map(plan => (
+        {skus.map(sku => (
           <button
             type={'submit'}
-            onClick={() => storeLastClicked(plan.planID)}
+            onClick={() => storeLastClicked(sku.skuID)}
             sx={{
               variant:
-                lastClicked === plan.planID
+                lastClicked === sku.skuID
                   ? 'planList.button.lastClicked'
                   : 'planList.button',
             }}
-            key={plan.id}
+            key={sku.id}
           >
-            {`$${formatPrice(plan.amount)}`}
+            {`$${sku.price}`}
           </button>
         ))}
       </div>
       <button
-        onClick={() => redirectToCheckout(lastClicked)}
+        onClick={() => redirectToDonate(lastClicked)}
         sx={{ variant: 'planList.button' }}
       >
-        Donate Monthly
+        Donate Once
       </button>
-    </main>
+    </>
   )
 }
 
-export default PlanList
+export default DonateList

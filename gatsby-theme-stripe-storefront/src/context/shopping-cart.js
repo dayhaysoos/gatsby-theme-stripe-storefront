@@ -55,6 +55,12 @@ const reducer = (cart, action) => {
         skus: removeSku(action.skuID, skus),
       }
 
+    case 'storeLastClicked':
+      return {
+        ...cart,
+        lastClicked: action.skuID,
+      }
+
     default:
       console.error(`unknown action ${action.type}`)
       return cart
@@ -65,7 +71,7 @@ export const CartContext = createContext()
 
 export const CartProvider = ({ children, stripePublicKey }) => (
   <CartContext.Provider
-    value={useReducer(reducer, { skus: {}, stripePublicKey })}
+    value={useReducer(reducer, { lastClicked: '', skus: {}, stripePublicKey })}
   >
     {children}
   </CartContext.Provider>
@@ -74,7 +80,7 @@ export const CartProvider = ({ children, stripePublicKey }) => (
 export const useCart = () => {
   const [cart, dispatch] = useContext(CartContext)
 
-  const { skus, stripePublicKey } = cart
+  const { skus, stripePublicKey, lastClicked } = cart
 
   const checkoutData = formatCart(skus)
   const cartCount = checkoutData.reduce(
@@ -87,14 +93,8 @@ export const useCart = () => {
   const handleQuantityChange = (quantity, skuID) =>
     dispatch({ type: 'handleQuantityChange', quantity, skuID })
   const deleteItem = skuID => dispatch({ type: 'delete', skuID })
-
-  const redirectToDonate = async subscription => {
-    const { error } = await stripe.redirectToCheckout({
-      items: [{ plan: subscription, quantity: 1 }],
-      successUrl: `http://localhost:8000/`,
-      cancelUrl: `http://localhost:8000/`,
-    })
-  }
+  const storeLastClicked = skuID =>
+    dispatch({ type: 'storeLastClicked', skuID })
 
   const redirectToCheckout = async (submitType = 'auto') => {
     const { error } = await stripe.redirectToCheckout({
@@ -102,6 +102,18 @@ export const useCart = () => {
       successUrl: `http://localhost:8000/`,
       cancelUrl: `http://localhost:8000/`,
       submitType,
+    })
+    if (error) {
+      console.warn('Error:', error)
+    }
+  }
+
+  const redirectToDonate = async skuID => {
+    const { error } = await stripe.redirectToCheckout({
+      items: [{ sku: 1, quantity: 1 }],
+      successUrl: `http://localhost:8000/`,
+      cancelUrl: `http://localhost:8000/`,
+      submitType: 'donate',
     })
     if (error) {
       console.warn('Error:', error)
@@ -116,6 +128,8 @@ export const useCart = () => {
     checkoutData,
     redirectToCheckout,
     handleQuantityChange,
+    lastClicked,
+    storeLastClicked,
     redirectToDonate,
   }
 }
