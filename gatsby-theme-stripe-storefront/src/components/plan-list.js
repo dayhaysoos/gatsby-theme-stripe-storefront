@@ -7,7 +7,13 @@ import { useDonate } from '../context/donate'
 const formatPrice = price => price.toString().slice(0, -2)
 
 const PlanList = ({ plans }) => {
-  const { storeLastClicked, lastClicked, redirectToPlanCheckout } = useDonate()
+  const {
+    storeLastClicked,
+    lastClicked,
+    isPaying,
+    redirectToPlanCheckout,
+    handlePaymentClick,
+  } = useDonate()
 
   return (
     <main sx={{ variant: 'planList.main' }}>
@@ -15,10 +21,10 @@ const PlanList = ({ plans }) => {
         {plans.map(plan => (
           <button
             type={'submit'}
-            onClick={() => storeLastClicked(plan.planID)}
+            onClick={() => storeLastClicked(plan)}
             sx={{
               variant:
-                lastClicked === plan.planID
+                lastClicked.planID === plan.planID
                   ? 'planList.button.lastClicked'
                   : 'planList.button',
             }}

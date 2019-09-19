@@ -1,13 +1,22 @@
 import React, { createContext, useReducer, useContext } from 'react'
 
 const reducer = (donate, action) => {
-  const { lastClicked } = action
+  const { lastClicked } = donate
+  const { plan } = action
 
   switch (action.type) {
     case 'storeLastClicked':
       return {
         ...donate,
-        lastClicked: lastClicked,
+        lastClicked: {
+          ...plan,
+        },
+      }
+
+    case 'isPaying':
+      return {
+        ...donate,
+        isPaying: true,
       }
 
     default:
@@ -21,9 +30,8 @@ const DonateContext = createContext()
 export const DonateProvider = ({ children, stripePublicKey }) => (
   <DonateContext.Provider
     value={useReducer(reducer, {
-      donate: {
-        lastClicked: '',
-      },
+      lastClicked: {},
+      isPaying: false,
       stripePublicKey,
     })}
   >
@@ -35,13 +43,21 @@ export const useDonate = () => {
   const [donate, dispatch] = useContext(DonateContext)
   const { stripePublicKey } = donate
 
-  const stripe = window.Stripe(stripePublicKey)
+  let stripe
 
-  const { lastClicked } = donate
+  const isBrowser = typeof window !== 'undefined'
 
-  const redirectToPlanCheckout = async plan => {
+  if (!isBrowser) {
+    return null
+  } else {
+    stripe = window.Stripe(stripePublicKey)
+  }
+
+  const { lastClicked, isPaying } = donate
+
+  const redirectToPlanCheckout = async () => {
     const { error } = await stripe.redirectToCheckout({
-      items: [{ plan, quantity: 1 }],
+      items: [{ plan: lastClicked.planID, quantity: 1 }],
       successUrl: `http://localhost:8000/`,
       cancelUrl: `http://localhost:8000/`,
     })
@@ -55,8 +71,9 @@ export const useDonate = () => {
     })
   }
 
-  const storeLastClicked = lastClicked =>
-    dispatch({ type: 'storeLastClicked', lastClicked })
+  const storeLastClicked = plan => dispatch({ type: 'storeLastClicked', plan })
+
+  const handlePaymentClick = plan => dispatch({ type: 'isPaying' })
 
   return {
     donate,
@@ -64,5 +81,7 @@ export const useDonate = () => {
     lastClicked,
     redirectToPlanCheckout,
     redirectToSkuCheckout,
+    isPaying,
+    handlePaymentClick,
   }
 }

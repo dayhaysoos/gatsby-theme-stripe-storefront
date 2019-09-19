@@ -82,12 +82,21 @@ export const useCart = () => {
 
   const { skus, stripePublicKey, lastClicked } = cart
 
+  let stripe
+
+  const isBrowser = typeof window !== 'undefined'
+
+  if (!isBrowser) {
+    return null
+  } else {
+    stripe = window.Stripe(stripePublicKey)
+  }
+
   const checkoutData = formatCart(skus)
   const cartCount = checkoutData.reduce(
     (acc, current) => acc + current.quantity,
     0
   )
-  const stripe = window.Stripe(stripePublicKey)
 
   const addItem = sku => dispatch({ type: 'addItem', sku })
   const handleQuantityChange = (quantity, skuID) =>
