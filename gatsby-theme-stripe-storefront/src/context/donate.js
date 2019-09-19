@@ -39,9 +39,17 @@ export const useDonate = () => {
 
   const { lastClicked } = donate
 
-  const redirectToCheckout = async subscription => {
+  const redirectToPlanCheckout = async plan => {
     const { error } = await stripe.redirectToCheckout({
-      items: [{ plan: subscription, quantity: 1 }],
+      items: [{ plan, quantity: 1 }],
+      successUrl: `http://localhost:8000/`,
+      cancelUrl: `http://localhost:8000/`,
+    })
+  }
+
+  const redirectToSkuCheckout = async sku => {
+    const { error } = await stripe.redirectToCheckout({
+      items: [{ sku, quantity: 1 }],
       successUrl: `http://localhost:8000/`,
       cancelUrl: `http://localhost:8000/`,
     })
@@ -50,5 +58,11 @@ export const useDonate = () => {
   const storeLastClicked = lastClicked =>
     dispatch({ type: 'storeLastClicked', lastClicked })
 
-  return { donate, storeLastClicked, lastClicked, redirectToCheckout }
+  return {
+    donate,
+    storeLastClicked,
+    lastClicked,
+    redirectToPlanCheckout,
+    redirectToSkuCheckout,
+  }
 }

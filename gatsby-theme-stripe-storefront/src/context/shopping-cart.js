@@ -108,9 +108,9 @@ export const useCart = () => {
     }
   }
 
-  const redirectToDonate = async skuID => {
+  const redirectToDonate = async sku => {
     const { error } = await stripe.redirectToCheckout({
-      items: [{ sku: 1, quantity: 1 }],
+      items: [{ sku, quantity: 1 }],
       successUrl: `http://localhost:8000/`,
       cancelUrl: `http://localhost:8000/`,
       submitType: 'donate',

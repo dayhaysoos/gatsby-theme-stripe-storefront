@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import React, { useState } from 'react'
-import { jsx } from 'theme-ui'
+import { Styled, jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import Layout from '../components/layout'
 import PlanList from '../components/plan-list'
 import DonateList from '../components/donate-list'
+import Layout from '../components/layout'
 
 const PlansTemplate = () => {
   const [donateState, setState] = useState({
@@ -50,26 +50,31 @@ const PlansTemplate = () => {
   return (
     <Layout>
       <section sx={{ variant: 'section.donateForm' }}>
-        <button
-          sx={{
-            variant: isSubscribing
-              ? 'planList.button'
-              : 'planList.button.lastClicked',
-          }}
-          onClick={() => setState({ isSubscribing: false })}
-        >
-          Give Once
-        </button>
-        <button
-          sx={{
-            variant: isSubscribing
-              ? 'planList.button.lastClicked'
-              : 'planList.button',
-          }}
-          onClick={() => setState({ isSubscribing: true })}
-        >
-          Monthly
-        </button>
+        <section sx={{ variant: 'section.buttonWrapper' }}>
+          <Styled.h2>Choose amount to give</Styled.h2>
+          <button
+            css={{ width: 'initial' }}
+            sx={{
+              variant: isSubscribing
+                ? 'planList.button'
+                : 'planList.button.lastClicked',
+            }}
+            onClick={() => setState({ isSubscribing: false })}
+          >
+            Give Once
+          </button>
+          <button
+            css={{ width: 'initial' }}
+            sx={{
+              variant: isSubscribing
+                ? 'planList.button.lastClicked'
+                : 'planList.button',
+            }}
+            onClick={() => setState({ isSubscribing: true })}
+          >
+            Monthly
+          </button>
+        </section>
         {isSubscribing ? (
           <PlanList plans={plans} />
         ) : (

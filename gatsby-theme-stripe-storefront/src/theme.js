@@ -259,6 +259,8 @@ export const theme = {
     },
     buttonWrapper: {
       display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
     },
     checkout: {
       display: 'flex',
@@ -266,7 +268,10 @@ export const theme = {
       alignItems: 'center',
     },
     donateForm: {
+      display: 'flex',
+      flexDirection: 'column',
       width: '300px',
+      margin: '0 auto',
     },
   },
   main: {

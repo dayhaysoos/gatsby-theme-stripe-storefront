@@ -2,11 +2,12 @@
 import React from 'react'
 import { jsx } from 'theme-ui'
 import { Formik, Field } from 'formik'
-import { formatPrice } from '../util/formatPrice'
-import { useDonate } from '../context/donate-form'
+import { useDonate } from '../context/donate'
+
+const formatPrice = price => price.toString().slice(0, -2)
 
 const PlanList = ({ plans }) => {
-  const { storeLastClicked, lastClicked, redirectToCheckout } = useDonate()
+  const { storeLastClicked, lastClicked, redirectToPlanCheckout } = useDonate()
 
   return (
     <main sx={{ variant: 'planList.main' }}>
@@ -28,8 +29,8 @@ const PlanList = ({ plans }) => {
         ))}
       </div>
       <button
-        onClick={() => redirectToCheckout(lastClicked)}
-        sx={{ variant: 'planList.button' }}
+        onClick={() => redirectToPlanCheckout(lastClicked)}
+        sx={{ variant: 'planList.button.donateSubmit' }}
       >
         Donate Monthly
       </button>

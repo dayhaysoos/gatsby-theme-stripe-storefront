@@ -29,7 +29,7 @@ const DonateList = ({ skus }) => {
       </div>
       <button
         onClick={() => redirectToDonate(lastClicked)}
-        sx={{ variant: 'planList.button' }}
+        sx={{ variant: 'planList.button.donateSubmit' }}
       >
         Donate Once
       </button>
