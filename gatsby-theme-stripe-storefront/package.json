@@ -22,7 +22,7 @@
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
     "@mdx-js/react": "^1.4.5",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.1.0",
     "formik": "^1.5.8",
     "gatsby-plugin-page-creator": "^2.1.17",
